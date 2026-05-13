@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Well Track + GlowBot</title>
 
 <link rel="stylesheet"
@@ -13,12 +14,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 body{
 margin:0;
 font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+background:linear-gradient(135deg,#ffe066,#ffd43b,#fff3bf,#fcc419);
 background-size:400% 400%;
 animation:bgMove 12s ease infinite;
 color:white;
 overflow-x:hidden;
 min-height:100vh;
+transition:1s;
 }
 
 /* Animated Background */
@@ -36,13 +38,13 @@ position:fixed;
 border-radius:50%;
 filter:blur(80px);
 z-index:-2;
-opacity:0.6;
+opacity:0.5;
 }
 
 .bg1{
 width:300px;
 height:300px;
-background:#ff6ec7;
+background:#fff3bf;
 top:-100px;
 left:-100px;
 }
@@ -50,7 +52,7 @@ left:-100px;
 .bg2{
 width:250px;
 height:250px;
-background:#7afcff;
+background:#ffd43b;
 bottom:-80px;
 right:-80px;
 }
@@ -58,7 +60,7 @@ right:-80px;
 .bg3{
 width:200px;
 height:200px;
-background:#c77dff;
+background:#ffe066;
 top:40%;
 left:60%;
 }
@@ -127,7 +129,7 @@ padding:12px;
 margin-top:10px;
 border:none;
 border-radius:15px;
-background:linear-gradient(45deg,#ff758c,#ff7eb3);
+background:linear-gradient(45deg,#f59f00,#fcc419);
 color:white;
 font-size:16px;
 font-weight:bold;
@@ -189,7 +191,6 @@ box-shadow:0 0 60px white;
 animation:float 3s infinite ease-in-out;
 transition:0.5s;
 font-size:80px;
-color:white;
 }
 
 @keyframes float{
@@ -197,8 +198,6 @@ color:white;
 50%{transform:translateY(-10px);}
 100%{transform:translateY(0px);}
 }
-
-/* Other */
 
 .center{
 text-align:center;
@@ -216,7 +215,7 @@ margin-top:10px;
 .bar{
 height:100%;
 width:0%;
-background:#ff758c;
+background:#fcc419;
 transition:0.5s;
 }
 
@@ -249,27 +248,42 @@ text-align:center;
 
 <div id="home" class="screen active">
 
-<h1>🌈 Well Track</h1>
+<h1>Well Track</h1>
 
 <div class="card">
+
 <h3>👤 Your Name</h3>
 
-<input id="nameInput" placeholder="Enter your name">
+<input id="nameInput"
+placeholder="Enter your name">
 
-<button onclick="saveName()">Save Name</button>
+<button onclick="saveName()">
+Save Name
+</button>
 
 <p id="username"></p>
+
 </div>
 
 <div class="card">
-<h3>🔥 Streak: <span id="streak">0</span></h3>
-<h3>⭐ Points: <span id="points">0</span></h3>
-<h3>🏆 Badge: <span id="badge">Beginner</span></h3>
+
+<h3>🔥 Streak:
+<span id="streak">0</span></h3>
+
+<h3>⭐ Points:
+<span id="points">0</span></h3>
+
+<h3>🏆 Badge:
+<span id="badge">Beginner</span></h3>
+
 </div>
 
 <div class="card">
+
 <h3>💡 Daily Tip</h3>
+
 <p id="tip"></p>
+
 </div>
 
 </div>
@@ -294,27 +308,52 @@ GlowBot is ready ✨
 
 <div class="card">
 
-<h3>🌈 Mood Check</h3>
+<h3>Mood Check</h3>
 
-<button class="small" onclick="setMood('happy')">😊</button>
+<button class="small"
+onclick="setMood('happy')">
+Happy
+</button>
 
-<button class="small" onclick="setMood('sad')">😞</button>
+<button class="small"
+onclick="setMood('sad')">
+Sad
+</button>
 
-<button class="small" onclick="setMood('anxious')">😰</button>
+<button class="small"
+onclick="setMood('alright')">
+Alright
+</button>
 
-<button class="small" onclick="setMood('tired')">😴</button>
+<button class="small"
+onclick="setMood('angry')">
+Angry
+</button>
 
-<button class="small" onclick="setMood('angry')">😡</button>
+<button class="small"
+onclick="setMood('stressed')">
+Stressed
+</button>
 
-<button class="small" onclick="setMood('calm')">😌</button>
+<button class="small"
+onclick="setMood('confused')">
+Confused
+</button>
 
-<button class="small" onclick="setMood('excited')">🤩</button>
+<button class="small"
+onclick="setMood('tired')">
+Tired
+</button>
 
-<button class="small" onclick="setMood('lonely')">🥺</button>
+<button class="small"
+onclick="setMood('calm')">
+Calm
+</button>
 
-<button class="small" onclick="setMood('stressed')">😵</button>
-
-<button class="small" onclick="setMood('motivated')">💪</button>
+<button class="small"
+onclick="setMood('anxiety')">
+Anxiety
+</button>
 
 <p id="moodText"></p>
 
@@ -446,7 +485,7 @@ Start tracking to unlock insights ✨
 
 </div>
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 
 <div class="nav">
 
@@ -535,15 +574,18 @@ document.getElementById('bar')
 .style.width=plantLevel+'%';
 
 if(plantLevel<30){
-document.getElementById('plant').innerText='🌱';
+document.getElementById('plant')
+.innerText='🌱';
 }
 
 else if(plantLevel<70){
-document.getElementById('plant').innerText='🌿';
+document.getElementById('plant')
+.innerText='🌿';
 }
 
 else{
-document.getElementById('plant').innerText='🌸';
+document.getElementById('plant')
+.innerText='🌸';
 }
 
 }
@@ -557,74 +599,148 @@ let crystal=document.getElementById('crystal');
 document.getElementById('moodText')
 .innerText='Mood: '+m;
 
+/* HAPPY */
+
 if(m=='happy'){
+
+document.body.style.background=
+'linear-gradient(135deg,#fff3bf,#ffe066,#ffd43b)';
+
 glow.style.background='#ffe066';
 glow.style.boxShadow='0 0 60px yellow';
+
 crystal.innerText='🌟';
-text.innerText='You shine brightly today ✨';
+
+text.innerText='Bright energy detected ✨';
+
 }
+
+/* SAD */
 
 if(m=='sad'){
+
+document.body.style.background=
+'linear-gradient(135deg,#74c0fc,#4dabf7,#a5d8ff)';
+
 glow.style.background='#74c0fc';
 glow.style.boxShadow='0 0 60px blue';
+
 crystal.innerText='💙';
-text.innerText='I am here for you 💛';
+
+text.innerText='Take things slowly today 💙';
+
 }
 
-if(m=='anxious'){
-glow.style.background='#b197fc';
-glow.style.boxShadow='0 0 60px purple';
-crystal.innerText='💜';
-text.innerText='Take a deep breath 🌬';
+/* ALRIGHT */
+
+if(m=='alright'){
+
+document.body.style.background=
+'linear-gradient(135deg,#8ce99a,#69db7c,#51cf66)';
+
+glow.style.background='#51cf66';
+glow.style.boxShadow='0 0 60px green';
+
+crystal.innerText='💚';
+
+text.innerText='Steady and balanced 🌿';
+
 }
 
-if(m=='tired'){
-glow.style.background='#adb5bd';
-glow.style.boxShadow='0 0 60px #adb5bd';
-crystal.innerText='🤍';
-text.innerText='You deserve rest 😴';
-}
+/* ANGRY */
 
 if(m=='angry'){
+
+document.body.style.background=
+'linear-gradient(135deg,#ff8787,#ff6b6b,#fa5252)';
+
 glow.style.background='#ff6b6b';
 glow.style.boxShadow='0 0 60px red';
+
 crystal.innerText='❤️';
-text.innerText='Take deep breaths ❤️';
+
+text.innerText='Pause and breathe ❤️';
+
 }
 
-if(m=='calm'){
-glow.style.background='#63e6be';
-glow.style.boxShadow='0 0 60px #63e6be';
-crystal.innerText='💚';
-text.innerText='Your energy feels peaceful 🌿';
-}
-
-if(m=='excited'){
-glow.style.background='#ffd43b';
-glow.style.boxShadow='0 0 60px gold';
-crystal.innerText='🌟';
-text.innerText='Excitement detected 🎉';
-}
-
-if(m=='lonely'){
-glow.style.background='#a5d8ff';
-glow.style.boxShadow='0 0 60px #74c0fc';
-crystal.innerText='🩵';
-text.innerText='You are not alone 💙';
-}
+/* STRESSED */
 
 if(m=='stressed'){
-glow.style.background='#c77dff';
-glow.style.boxShadow='0 0 60px purple';
-crystal.innerText='💜';
-text.innerText='Let us calm your mind 🌬';
+
+document.body.style.background=
+'linear-gradient(135deg,#ffc078,#ffa94d,#ff922b)';
+
+glow.style.background='#ff922b';
+glow.style.boxShadow='0 0 60px orange';
+
+crystal.innerText='🧡';
+
+text.innerText='You need a small break 🌤';
+
 }
 
-if(m=='motivated'){
-glow.style.background='#51cf66';
-glow.style.boxShadow='0 0 60px #51cf66';
-crystal.innerText='💚';
-text.innerText='You are unstoppable today 💪';
+/* CONFUSED */
+
+if(m=='confused'){
+
+document.body.style.background=
+'linear-gradient(135deg,#faa2c1,#f783ac,#ff8fab)';
+
+glow.style.background='#ff8fab';
+glow.style.boxShadow='0 0 60px pink';
+
+crystal.innerText='🩷';
+
+text.innerText='It is okay to feel unsure 💭';
+
+}
+
+/* TIRED */
+
+if(m=='tired'){
+
+document.body.style.background=
+'linear-gradient(135deg,#c0a0ff,#b197fc,#9775fa)';
+
+glow.style.background='#9775fa';
+glow.style.boxShadow='0 0 60px purple';
+
+crystal.innerText='💜';
+
+text.innerText='Rest is important 😴';
+
+}
+
+/* CALM */
+
+if(m=='calm'){
+
+document.body.style.background=
+'linear-gradient(135deg,#dee2e6,#ced4da,#adb5bd)';
+
+glow.style.background='#adb5bd';
+glow.style.boxShadow='0 0 60px grey';
+
+crystal.innerText='🩶';
+
+text.innerText='Peaceful energy detected 🌙';
+
+}
+
+/* ANXIETY */
+
+if(m=='anxiety'){
+
+document.body.style.background=
+'linear-gradient(135deg,#ffd8a8,#ffc078,#ffe8cc)';
+
+glow.style.background='#ffc078';
+glow.style.boxShadow='0 0 60px peachpuff';
+
+crystal.innerText='🍑';
+
+text.innerText='Take deep breaths slowly 🌬';
+
 }
 
 addPoints();
@@ -680,12 +796,14 @@ addPoints();
 }
 
 let tips=[
+
 'Drink more water 💧',
 'Take breaks while studying 📚',
 'Sleep early tonight 😴',
 'Talk to a friend 💬',
 'Stretch your body 🏃',
 'Write 3 good things daily ✨'
+
 ];
 
 document.getElementById('tip').innerText=
