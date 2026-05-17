@@ -712,3 +712,627 @@ tips[Math.floor(Math.random()*tips.length)];
 
 </body>
   </html>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Well Track + GlowBot</title>  <link rel="stylesheet"  
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  <style>  
+  
+body{  
+margin:0;  
+font-family:Arial,sans-serif;  
+background:linear-gradient(135deg,#ffe066,#ffd43b,#fff3bf,#fcc419);  
+background-size:400% 400%;  
+animation:bgMove 12s ease infinite;  
+color:white;  
+overflow-x:hidden;  
+min-height:100vh;  
+transition:1s;  
+}  
+  
+/* Animated Background */  
+  
+@keyframes bgMove{  
+0%{background-position:0% 50%;}  
+50%{background-position:100% 50%;}  
+100%{background-position:0% 50%;}  
+}  
+  
+/* Glow Decorations */  
+  
+.bg1,.bg2,.bg3{  
+position:fixed;  
+border-radius:50%;  
+filter:blur(80px);  
+z-index:-2;  
+opacity:0.5;  
+}  
+  
+.bg1{  
+width:300px;  
+height:300px;  
+background:#fff3bf;  
+top:-100px;  
+left:-100px;  
+}  
+  
+.bg2{  
+width:250px;  
+height:250px;  
+background:#ffd43b;  
+bottom:-80px;  
+right:-80px;  
+}  
+  
+.bg3{  
+width:200px;  
+height:200px;  
+background:#ffe066;  
+top:40%;  
+left:60%;  
+}  
+  
+/* Floating Particles */  
+  
+.sparkle{  
+position:fixed;  
+width:20px;  
+height:20px;  
+background:white;  
+border-radius:50%;  
+opacity:0.4;  
+animation:floaty 6s infinite;  
+z-index:-1;  
+}  
+  
+.s1{top:20%;left:10%;}  
+.s2{top:70%;left:80%;}  
+.s3{top:40%;left:50%;}  
+  
+@keyframes floaty{  
+0%{transform:translateY(0px);}  
+50%{transform:translateY(-20px);}  
+100%{transform:translateY(0px);}  
+}  
+  
+/* Screens */  
+  
+.screen{  
+display:none;  
+padding:20px;  
+padding-bottom:100px;  
+}  
+  
+.active{  
+display:block;  
+}  
+  
+h1,h2{  
+text-align:center;  
+}  
+  
+/* Cards */  
+  
+.card{  
+background:rgba(255,255,255,0.18);  
+backdrop-filter:blur(14px);  
+border-radius:22px;  
+padding:20px;  
+margin:15px 0;  
+border:1px solid rgba(255,255,255,0.25);  
+box-shadow:0 8px 32px rgba(0,0,0,0.15);  
+transition:0.3s;  
+}  
+  
+.card:hover{  
+transform:translateY(-5px);  
+}  
+  
+/* Buttons */  
+  
+button{  
+width:100%;  
+padding:12px;  
+margin-top:10px;  
+border:none;  
+border-radius:15px;  
+background:linear-gradient(45deg,#f59f00,#fcc419);  
+color:white;  
+font-size:16px;  
+font-weight:bold;  
+cursor:pointer;  
+transition:0.3s;  
+}  
+  
+button:hover{  
+transform:scale(1.03);  
+}  
+  
+.small{  
+width:30%;  
+display:inline-block;  
+}  
+  
+/* Inputs */  
+  
+input{  
+width:100%;  
+padding:12px;  
+border:none;  
+border-radius:12px;  
+margin-top:8px;  
+box-sizing:border-box;  
+}  
+  
+/* Navigation */  
+  
+.nav{  
+position:fixed;  
+bottom:0;  
+width:100%;  
+display:flex;  
+justify-content:space-around;  
+padding:12px;  
+background:rgba(255,255,255,0.2);  
+backdrop-filter:blur(10px);  
+}  
+  
+.nav button{  
+width:auto;  
+margin:0;  
+font-size:18px;  
+}  
+  
+/* GlowBot */  
+  
+.robotGlow{  
+width:160px;  
+height:160px;  
+margin:auto;  
+border-radius:35px;  
+display:flex;  
+align-items:center;  
+justify-content:center;  
+background:white;  
+box-shadow:0 0 60px white;  
+animation:float 3s infinite ease-in-out;  
+transition:0.5s;  
+font-size:80px;  
+}  
+  
+@keyframes float{  
+0%{transform:translateY(0px);}  
+50%{transform:translateY(-10px);}  
+100%{transform:translateY(0px);}  
+}  
+  
+.center{  
+text-align:center;  
+}  
+  
+.progress{  
+width:100%;  
+height:20px;  
+background:white;  
+border-radius:20px;  
+overflow:hidden;  
+margin-top:10px;  
+}  
+  
+.bar{  
+height:100%;  
+width:0%;  
+background:#fcc419;  
+transition:0.5s;  
+}  
+  
+.plant{  
+font-size:80px;  
+text-align:center;  
+}  
+  
+.crystal{  
+font-size:60px;  
+text-align:center;  
+}  
+  
+</style>  </head>  <body>  <!-- Background -->  <div class="bg1"></div>  
+<div class="bg2"></div>  
+<div class="bg3"></div>  <div class="sparkle s1"></div>  
+<div class="sparkle s2"></div>  
+<div class="sparkle s3"></div>  <!-- HOME -->  <div id="home" class="screen active">  <h1>Well Track</h1>  <div class="card">  <h3>👤 Your Name</h3>  <input id="nameInput"  
+placeholder="Enter your name">
+
+<button onclick="saveName()">  
+Save Name  
+</button>  <p id="username"></p>  </div>  <div class="card">  <h3>🔥 Streak:  
+<span id="streak">0</span></h3>  <h3>⭐ Points:  
+<span id="points">0</span></h3>  <h3>🏆 Badge:  
+<span id="badge">Beginner</span></h3>  </div>  <div class="card">  <h3>💡 Daily Tip</h3>  <p id="tip"></p>  </div>  </div>  <!-- GLOWBOT -->  <div id="mental" class="screen">  <h2>🌟 GlowBot</h2>  <div class="card">  <div id="robotGlow" class="robotGlow">  
+🌟  
+</div>  <p id="robotText" class="center">  
+GlowBot is ready ✨  
+</p>  </div>  <div class="card">  <h3>Mood Check</h3>  <button class="small"  
+onclick="setMood('happy')">
+Happy
+</button>
+
+<button class="small"  
+onclick="setMood('sad')">
+Sad
+</button>
+
+<button class="small"  
+onclick="setMood('alright')">
+Alright
+</button>
+
+<button class="small"  
+onclick="setMood('angry')">
+Angry
+</button>
+
+<button class="small"  
+onclick="setMood('stressed')">
+Stressed
+</button>
+
+<button class="small"  
+onclick="setMood('confused')">
+Confused
+</button>
+
+<button class="small"  
+onclick="setMood('tired')">
+Tired
+</button>
+
+<button class="small"  
+onclick="setMood('calm')">
+Calm
+</button>
+
+<button class="small"  
+onclick="setMood('anxiety')">
+Anxiety
+</button>
+
+<p id="moodText"></p>  </div>  <div class="card">  <h3>💎 Emotion Crystal</h3>  <div id="crystal" class="crystal">  
+💎  
+</div>  </div>  <div class="card">  <h3>🌬 Breathing Exercise</h3>  <button onclick="breathing()">  
+Start  
+</button>  <p id="breath"></p>  </div>  <div class="card">  <h3>📝 Reflection</h3>  <input id="reflectionInput"  
+placeholder="Write about your day">
+
+<button onclick="saveReflection()">  
+Save  
+</button>  <p id="reflectionText"></p>  </div>  </div>  <!-- PHYSICAL -->  <div id="physical" class="screen">  <h2>🏃 Physical Health</h2>  <div class="card">  <h3>💧 Water Intake</h3>  <button onclick="addWater()">  
++1 Glass  
+</button>  <p id="waterText">  
+0 glasses  
+</p>  </div>  <div class="card">  <h3>😴 Sleep Tracker</h3>  <input id="sleepInput"  
+placeholder="Hours slept">
+
+<button onclick="saveSleep()">  
+Save Sleep  
+</button>  <p id="sleepText"></p>  </div>  <div class="card">  <h3>🏋 Exercise</h3>  <button onclick="exerciseDone()">  
+Workout Complete  
+</button>  </div>  </div>  <!-- GARDEN -->  <div id="garden" class="screen">  <h2>🌱 Growth Garden</h2>  <div class="card">  <div id="plant" class="plant">  
+🌱  
+</div>  <p class="center">  
+Healthy habits grow your garden ✨  
+</p>  <div class="progress">  
+<div id="bar" class="bar"></div>  
+</div>  </div>  </div>  <!-- INSIGHTS -->  <div id="insights" class="screen">  <h2>📊 Smart Insights</h2>  <div class="card">  <p id="insightText">  
+Start tracking to unlock insights ✨  
+</p>  </div>  </div>  <!-- NAVIGATION -->  <div class="nav">  <button onclick="show('home')">  
+<i class="fa-solid fa-house"></i>  
+</button>  <button onclick="show('mental')">  
+<i class="fa-solid fa-brain"></i>  
+</button>  <button onclick="show('physical')">  
+<i class="fa-solid fa-heart-pulse"></i>  
+</button>  <button onclick="show('garden')">  
+<i class="fa-solid fa-seedling"></i>  
+</button>  <button onclick="show('insights')">  
+<i class="fa-solid fa-chart-line"></i>  
+</button>  </div>  <script>  
+  
+let points=0;  
+let streak=0;  
+let water=0;  
+let plantLevel=0;  
+  
+function show(screen){  
+  
+document.querySelectorAll('.screen')  
+.forEach(x=>x.classList.remove('active'));  
+  
+document.getElementById(screen)  
+.classList.add('active');  
+  
+}  
+  
+function saveName(){  
+  
+let n=document.getElementById('nameInput').value;  
+  
+document.getElementById('username')  
+.innerText='Hi '+n+' 👋';  
+  
+}  
+  
+function addPoints(){  
+  
+points++;  
+streak++;  
+  
+document.getElementById('points')  
+.innerText=points;  
+  
+document.getElementById('streak')  
+.innerText=streak;  
+  
+if(streak>3){  
+document.getElementById('badge')  
+.innerText='🏆 Rising Star';  
+}  
+  
+if(streak>7){  
+document.getElementById('badge')  
+.innerText='🔥 Wellness Master';  
+}  
+  
+growPlant();  
+  
+}  
+  
+function growPlant(){  
+  
+plantLevel+=10;  
+  
+if(plantLevel>100){  
+plantLevel=100;  
+}  
+  
+document.getElementById('bar')  
+.style.width=plantLevel+'%';  
+  
+if(plantLevel<30){  
+document.getElementById('plant')  
+.innerText='🌱';  
+}  
+  
+else if(plantLevel<70){  
+document.getElementById('plant')  
+.innerText='🌿';  
+}  
+  
+else{  
+document.getElementById('plant')  
+.innerText='🌸';  
+}  
+  
+}  
+  
+function setMood(m){  
+  
+let glow=document.getElementById('robotGlow');  
+let text=document.getElementById('robotText');  
+let crystal=document.getElementById('crystal');  
+  
+document.getElementById('moodText')  
+.innerText='Mood: '+m;  
+  
+/* HAPPY */  
+  
+if(m=='happy'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#fff3bf,#ffe066,#ffd43b)';  
+  
+glow.style.background='#ffe066';  
+glow.style.boxShadow='0 0 60px yellow';  
+  
+crystal.innerText='🌟';  
+  
+text.innerText='Bright energy detected ✨';  
+  
+}  
+  
+/* SAD */  
+  
+if(m=='sad'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#74c0fc,#4dabf7,#a5d8ff)';  
+  
+glow.style.background='#74c0fc';  
+glow.style.boxShadow='0 0 60px blue';  
+  
+crystal.innerText='💙';  
+  
+text.innerText='Take things slowly today 💙';  
+  
+}  
+  
+/* ALRIGHT */  
+  
+if(m=='alright'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#8ce99a,#69db7c,#51cf66)';  
+  
+glow.style.background='#51cf66';  
+glow.style.boxShadow='0 0 60px green';  
+  
+crystal.innerText='💚';  
+  
+text.innerText='Steady and balanced 🌿';  
+  
+}  
+  
+/* ANGRY */  
+  
+if(m=='angry'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#ff8787,#ff6b6b,#fa5252)';  
+  
+glow.style.background='#ff6b6b';  
+glow.style.boxShadow='0 0 60px red';  
+  
+crystal.innerText='❤️';  
+  
+text.innerText='Pause and breathe ❤️';  
+  
+}  
+  
+/* STRESSED */  
+  
+if(m=='stressed'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#ffc078,#ffa94d,#ff922b)';  
+  
+glow.style.background='#ff922b';  
+glow.style.boxShadow='0 0 60px orange';  
+  
+crystal.innerText='🧡';  
+  
+text.innerText='You need a small break 🌤';  
+  
+}  
+  
+/* CONFUSED */  
+  
+if(m=='confused'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#faa2c1,#f783ac,#ff8fab)';  
+  
+glow.style.background='#ff8fab';  
+glow.style.boxShadow='0 0 60px pink';  
+  
+crystal.innerText='🩷';  
+  
+text.innerText='It is okay to feel unsure 💭';  
+  
+}  
+  
+/* TIRED */  
+  
+if(m=='tired'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#c0a0ff,#b197fc,#9775fa)';  
+  
+glow.style.background='#9775fa';  
+glow.style.boxShadow='0 0 60px purple';  
+  
+crystal.innerText='💜';  
+  
+text.innerText='Rest is important 😴';  
+  
+}  
+  
+/* CALM */  
+  
+if(m=='calm'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#dee2e6,#ced4da,#adb5bd)';  
+  
+glow.style.background='#adb5bd';  
+glow.style.boxShadow='0 0 60px grey';  
+  
+crystal.innerText='🩶';  
+  
+text.innerText='Peaceful energy detected 🌙';  
+  
+}  
+  
+/* ANXIETY */  
+  
+if(m=='anxiety'){  
+  
+document.body.style.background=  
+'linear-gradient(135deg,#ffd8a8,#ffc078,#ffe8cc)';  
+  
+glow.style.background='#ffc078';  
+glow.style.boxShadow='0 0 60px peachpuff';  
+  
+crystal.innerText='🍑';  
+  
+text.innerText='Take deep breaths slowly 🌬';  
+  
+}  
+  
+addPoints();  
+  
+}  
+  
+function breathing(){  
+  
+document.getElementById('breath')  
+.innerText='Inhale... Hold... Exhale... 🌬';  
+  
+}  
+  
+function saveReflection(){  
+  
+let r=document.getElementById('reflectionInput').value;  
+  
+document.getElementById('reflectionText')  
+.innerText=r;  
+  
+addPoints();  
+  
+}  
+  
+function addWater(){  
+  
+water++;  
+  
+document.getElementById('waterText')  
+.innerText=water+' glasses';  
+  
+addPoints();  
+  
+}  
+  
+function saveSleep(){  
+  
+let s=document.getElementById('sleepInput').value;  
+  
+document.getElementById('sleepText')  
+.innerText=s+' hours slept';  
+  
+addPoints();  
+  
+}  
+  
+function exerciseDone(){  
+  
+alert('Great job exercising 💪');  
+  
+addPoints();  
+  
+}  
+  
+let tips=[  
+  
+'Drink more water 💧',  
+'Take breaks while studying 📚',  
+'Sleep early tonight 😴',  
+'Talk to a friend 💬',  
+'Stretch your body 🏃',  
+'Write 3 good things daily ✨'  
+  
+];  
+  
+document.getElementById('tip').innerText=  
+tips[Math.floor(Math.random()*tips.length)];  
+  
+</script>  </body>  
+</html>  
+Bro sue this code only I hsre the new background u put I loved this background don't change how the app looks just add the new features
