@@ -15,28 +15,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:system-ui;
+font-family:Arial,sans-serif;
 }
 
 body{
 background:linear-gradient(135deg,#ffe066,#ffd43b,#fff3bf);
-height:100vh;
-overflow:hidden;
+min-height:100vh;
 transition:1s;
-}
-
-/* APP */
-
-.app{
-max-width:430px;
-height:100vh;
-margin:auto;
-background:white;
-display:flex;
-flex-direction:column;
-overflow:hidden;
-border-radius:30px;
-box-shadow:0 20px 60px rgba(0,0,0,0.3);
+overflow-x:hidden;
 }
 
 /* TOP BAR */
@@ -48,43 +34,51 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 font-weight:bold;
-font-size:18px;
+font-size:20px;
+position:sticky;
+top:0;
+z-index:100;
 }
 
-/* SCREEN */
+/* SCREENS */
 
 .screen{
-flex:1;
-overflow-y:auto;
-padding:15px;
 display:none;
+padding:20px;
+padding-bottom:120px;
 }
 
 .active{
 display:block;
 }
 
-/* CARD */
+/* CARDS */
 
 .card{
-background:#f7f7f7;
-padding:16px;
-border-radius:22px;
-margin-bottom:14px;
-box-shadow:0 5px 15px rgba(0,0,0,0.06);
+background:white;
+padding:18px;
+border-radius:24px;
+margin-bottom:18px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
 /* BUTTONS */
 
 button{
 width:100%;
-padding:12px;
+padding:14px;
 border:none;
 border-radius:15px;
 background:linear-gradient(135deg,#fcc419,#ffd43b);
 font-weight:bold;
-margin-top:8px;
+font-size:16px;
+margin-top:10px;
 cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.02);
 }
 
 .small{
@@ -97,22 +91,22 @@ margin:5px;
 
 input{
 width:100%;
-padding:12px;
+padding:14px;
 border-radius:14px;
 border:1px solid #ddd;
-margin-top:8px;
+margin-top:10px;
 }
 
 /* GLOWBOT */
 
 .robot{
-height:160px;
+height:170px;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:85px;
-border-radius:30px;
+font-size:90px;
 background:white;
+border-radius:30px;
 box-shadow:0 0 40px rgba(255,212,59,0.7);
 transition:0.5s;
 }
@@ -120,9 +114,12 @@ transition:0.5s;
 /* NAVIGATION */
 
 .nav{
+position:fixed;
+bottom:0;
+width:100%;
 display:flex;
 justify-content:space-around;
-padding:12px;
+padding:14px;
 background:white;
 border-top:1px solid #eee;
 }
@@ -133,30 +130,12 @@ font-size:22px;
 width:auto;
 }
 
-/* ENERGY BAR */
-
-.energy{
-width:100%;
-height:22px;
-background:#ddd;
-border-radius:20px;
-overflow:hidden;
-margin-top:10px;
-}
-
-.energyFill{
-height:100%;
-width:75%;
-background:linear-gradient(90deg,#51cf66,#94d82d);
-transition:0.5s;
-}
-
-/* CHAT */
+/* CHATBOT */
 
 .chatBox{
-height:220px;
+height:230px;
 overflow-y:auto;
-background:white;
+background:#f8f9fa;
 border-radius:15px;
 padding:10px;
 margin-top:10px;
@@ -175,8 +154,69 @@ margin-left:auto;
 }
 
 .bot{
-background:#f1f3f5;
+background:white;
 }
+
+/* BREATHING */
+
+.breathCircle{
+width:120px;
+height:120px;
+border-radius:50%;
+background:#ffd43b;
+margin:20px auto;
+animation:breathe 4s infinite;
+}
+
+@keyframes breathe{
+
+0%{
+transform:scale(0.8);
+}
+
+50%{
+transform:scale(1.1);
+}
+
+100%{
+transform:scale(0.8);
+}
+
+}
+
+/* ENERGY */
+
+.energyBar{
+width:100%;
+height:22px;
+background:#ddd;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.energyFill{
+height:100%;
+width:75%;
+background:linear-gradient(90deg,#51cf66,#94d82d);
+transition:0.5s;
+}
+
+/* ECOSYSTEM */
+
+.ecosystem{
+font-size:75px;
+text-align:center;
+margin-top:15px;
+}
+
+/* CENTER */
+
+.center{
+text-align:center;
+}
+
+/* AURA */
 
 .aura{
 position:fixed;
@@ -188,25 +228,8 @@ opacity:0.3;
 z-index:-1;
 top:20%;
 left:20%;
-transition:1s;
 background:yellow;
-}
-
-/* breathing */
-
-.breath{
-width:120px;
-height:120px;
-border-radius:50%;
-background:#ffd43b;
-margin:20px auto;
-animation:breathe 4s infinite;
-}
-
-@keyframes breathe{
-0%{transform:scale(0.8);}
-50%{transform:scale(1.1);}
-100%{transform:scale(0.8);}
+transition:1s;
 }
 
 </style>
@@ -216,13 +239,14 @@ animation:breathe 4s infinite;
 
 <div class="aura" id="aura"></div>
 
-<div class="app">
-
 <!-- TOP -->
 
 <div class="topbar">
+
 <span>Well Track</span>
+
 <span>🌟 GlowBot</span>
+
 </div>
 
 <!-- HOME -->
@@ -231,13 +255,13 @@ animation:breathe 4s infinite;
 
 <div class="card">
 
-<h3>👤 Profile</h3>
+<h2>👤 Profile</h2>
 
 <input id="name"
 placeholder="Enter your name">
 
 <button onclick="saveName()">
-Save
+Save Name
 </button>
 
 <p id="hello"></p>
@@ -246,13 +270,13 @@ Save
 
 <div class="card">
 
-<h3>⚡ GlowBot Energy Core</h3>
+<h2>⚡ GlowBot Energy</h2>
 
 <p id="energyText">
 Energy: 75%
 </p>
 
-<div class="energy">
+<div class="energyBar">
 <div class="energyFill"
 id="energyFill"></div>
 </div>
@@ -261,11 +285,9 @@ id="energyFill"></div>
 
 <div class="card">
 
-<h3>📊 Recovery Score</h3>
+<h2>📊 Recovery Score</h2>
 
-<h1 id="score">
-82%
-</h1>
+<h1>82%</h1>
 
 <p>
 Your balance is stable today 🌿
@@ -286,8 +308,8 @@ id="robot">
 🌟
 </div>
 
-<h2 id="moodText"
-style="text-align:center;margin-top:10px;">
+<h2 class="center"
+id="moodText">
 GlowBot Ready
 </h2>
 
@@ -295,7 +317,7 @@ GlowBot Ready
 
 <div class="card">
 
-<h3>🌈 Mood Sync</h3>
+<h2>🌈 Mood Sync</h2>
 
 <button class="small"
 onclick="setMood('happy')">
@@ -305,6 +327,11 @@ Happy
 <button class="small"
 onclick="setMood('sad')">
 Sad
+</button>
+
+<button class="small"
+onclick="setMood('alright')">
+Alright
 </button>
 
 <button class="small"
@@ -341,36 +368,36 @@ Anxiety
 
 <div class="card">
 
-<h3>🌬 Comfort Mode</h3>
-
-<div class="breath"></div>
-
-<p style="text-align:center;">
-Inhale • Hold • Exhale
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>🤖 Glow AI</h3>
+<h2>🤖 Glow AI</h2>
 
 <div class="chatBox"
 id="chatBox">
 
 <div class="message bot">
-Hi, I’m Glow AI 🌟
-How are you feeling today?
+Hi, I’m Glow AI 🌟  
+Tell me how you feel today.
 </div>
 
 </div>
 
 <input id="chatInput"
-placeholder="Talk to Glow AI">
+placeholder="Talk to Glow AI...">
 
 <button onclick="sendMessage()">
 Send
 </button>
+
+</div>
+
+<div class="card">
+
+<h2>🌬 Comfort Mode</h2>
+
+<div class="breathCircle"></div>
+
+<p class="center">
+Inhale • Hold • Exhale
+</p>
 
 </div>
 
@@ -382,7 +409,7 @@ Send
 
 <div class="card">
 
-<h3>💧 Water Tracker</h3>
+<h2>💧 Water Tracker</h2>
 
 <p id="waterText">
 0 glasses today
@@ -396,7 +423,7 @@ Send
 
 <div class="card">
 
-<h3>😴 Sleep</h3>
+<h2>😴 Sleep</h2>
 
 <input id="sleep"
 placeholder="Hours slept">
@@ -409,7 +436,7 @@ Save Sleep
 
 <div class="card">
 
-<h3>🏃 Activity</h3>
+<h2>🏃 Activity</h2>
 
 <button onclick="exerciseDone()">
 Workout Complete
@@ -419,10 +446,10 @@ Workout Complete
 
 <div class="card">
 
-<h3>🧠 Body Energy Sync</h3>
+<h2>⚡ Body Energy Sync</h2>
 
 <p id="syncText">
-GlowBot is stable 🌿
+GlowBot energy is stable 🌿
 </p>
 
 </div>
@@ -435,7 +462,7 @@ GlowBot is stable 🌿
 
 <div class="card">
 
-<h3>📈 Smart Insights</h3>
+<h2>📈 Smart Insights</h2>
 
 <p>
 • Your mood improves after exercise 💪
@@ -453,21 +480,22 @@ GlowBot is stable 🌿
 
 <div class="card">
 
-<h3>🌌 Emotion Ecosystem</h3>
+<h2>🌌 Emotion Ecosystem</h2>
 
 <p>
-Your emotional world evolves based on habits and moods.
+Your emotions create a unique world.
 </p>
 
-<h1 style="text-align:center;">
-🌱🌤🌙⭐
-</h1>
-
+<div class="ecosystem"
+id="ecosystem">
+🌱
 </div>
 
 </div>
 
-<!-- NAV -->
+</div>
+
+<!-- NAVIGATION -->
 
 <div class="nav">
 
@@ -489,11 +517,9 @@ Your emotional world evolves based on habits and moods.
 
 </div>
 
-</div>
-
 <script>
 
-/* screens */
+/* NAVIGATION */
 
 function show(id){
 
@@ -505,7 +531,7 @@ document.getElementById(id)
 
 }
 
-/* name */
+/* PROFILE */
 
 function saveName(){
 
@@ -518,7 +544,7 @@ document.getElementById("hello")
 
 }
 
-/* mood system */
+/* MOODS */
 
 function setMood(m){
 
@@ -566,6 +592,25 @@ text.innerText=
 "Take things slowly 💙";
 
 aura.style.background="#4dabf7";
+
+}
+
+/* ALRIGHT */
+
+if(m=="alright"){
+
+document.body.style.background=
+"linear-gradient(135deg,#8ce99a,#51cf66)";
+
+robot.innerText="💚";
+
+robot.style.boxShadow=
+"0 0 50px green";
+
+text.innerText=
+"Balanced energy 🌿";
+
+aura.style.background="green";
 
 }
 
@@ -685,7 +730,7 @@ aura.style.background="peachpuff";
 
 }
 
-/* chat ai */
+/* CHATBOT */
 
 function sendMessage(){
 
@@ -699,14 +744,14 @@ let text=input.value;
 
 if(text=="") return;
 
-/* user message */
+/* USER MESSAGE */
 
 chat.innerHTML +=
 '<div class="message user">'+
 text+
 '</div>';
 
-/* ai response */
+/* BOT RESPONSE */
 
 let response=
 "I understand 🌿";
@@ -731,6 +776,26 @@ response=
 "Your body may need rest 😴";
 }
 
+if(text.includes("alone")){
+response=
+"You are not alone 🌟";
+}
+
+/* COMFORT MODE */
+
+if(text.includes("cry") ||
+text.includes("horrible")){
+
+response=
+"Comfort mode activated 🌙";
+
+document.body.style.background=
+"linear-gradient(135deg,#adb5bd,#dee2e6)";
+
+}
+
+/* BOT MESSAGE */
+
 chat.innerHTML +=
 '<div class="message bot">'+
 response+
@@ -743,43 +808,7 @@ chat.scrollHeight;
 
 }
 
-/* physical */
-
-let water=0;
-
-function waterPlus(){
-
-water++;
-
-document.getElementById("waterText")
-.innerText=
-water+" glasses today";
-
-updateEnergy(5);
-
-}
-
-function saveSleep(){
-
-updateEnergy(10);
-
-document.getElementById("syncText")
-.innerText=
-"Sleep restored GlowBot energy 😴";
-
-}
-
-function exerciseDone(){
-
-updateEnergy(15);
-
-document.getElementById("syncText")
-.innerText=
-"Movement boosted emotional balance 💪";
-
-}
-
-/* energy core */
+/* ENERGY SYSTEM */
 
 let energy=75;
 
@@ -801,7 +830,88 @@ energy+"%";
 
 }
 
+/* WATER */
+
+let water=0;
+
+function waterPlus(){
+
+water++;
+
+document.getElementById("waterText")
+.innerText=
+water+" glasses today";
+
+updateEnergy(5);
+
+document.getElementById("syncText")
+.innerText=
+"Hydration boosted GlowBot 💧";
+
+updateEcosystem();
+
+}
+
+/* SLEEP */
+
+function saveSleep(){
+
+updateEnergy(10);
+
+document.getElementById("syncText")
+.innerText=
+"Sleep restored GlowBot energy 😴";
+
+updateEcosystem();
+
+}
+
+/* EXERCISE */
+
+function exerciseDone(){
+
+updateEnergy(15);
+
+document.getElementById("syncText")
+.innerText=
+"Movement boosted emotional balance 💪";
+
+updateEcosystem();
+
+}
+
+/* ECOSYSTEM */
+
+let ecosystemLevel=0;
+
+function updateEcosystem(){
+
+ecosystemLevel++;
+
+if(ecosystemLevel<3){
+
+document.getElementById("ecosystem")
+.innerText="🌱";
+
+}
+
+else if(ecosystemLevel<6){
+
+document.getElementById("ecosystem")
+.innerText="🌿✨";
+
+}
+
+else{
+
+document.getElementById("ecosystem")
+.innerText="🌳⭐🦋";
+
+}
+
+}
+
 </script>
 
 </body>
-  </html>
+</html>
