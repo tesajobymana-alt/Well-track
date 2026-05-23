@@ -1335,71 +1335,120 @@ tips[Math.floor(Math.random()*tips.length)];
   
 </script>  </body>  
 </html>  
-<!-- ADD THIS INSIDE YOUR BODY -->
 
-<div class="card">
-  <h2>Focus Session Mode</h2>
-  <button onclick="startFocus()">Start Focus Session</button>
+<!-- WELL TRACK FEATURES -->
+
+<div class="feature-card">
+
+  <h2>🎯 Focus Session Mode</h2>
+
+  <button class="focus-btn" onclick="startFocus()">
+    Start Focus Session
+  </button>
+
   <div id="timer">25:00</div>
+
 </div>
 
-<div class="card">
-  <h2>Burnout Alert</h2>
-  <button onclick="burnoutAlert()">Check Burnout</button>
+<div class="feature-card">
+
+  <h2>⚠ Burnout Alert</h2>
+
+  <button class="burnout-btn" onclick="burnoutAlert()">
+    Check Burnout
+  </button>
+
 </div>
 
-<div class="card">
-  <h2>Silent Help Signal</h2>
-  <button onclick="helpSignal()">Send Help Signal</button>
+<div class="feature-card">
+
+  <h2>🆘 Silent Help Signal</h2>
+
+  <button class="help-btn" onclick="helpSignal()">
+    Send Help Signal
+  </button>
+
 </div>
 
 <div id="message"></div>
 
 <style>
-.card{
-  background:#1f2937;
-  padding:20px;
-  margin-top:20px;
-  border-radius:15px;
-  color:white;
+
+.feature-card{
+  background: #fff8dc;
+  border: 2px solid #ffd54f;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 15px rgba(255, 213, 79, 0.4);
+}
+
+.feature-card h2{
+  color: #e6a700;
+  margin-bottom: 15px;
 }
 
 button{
-  padding:12px 20px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-  margin-top:10px;
-  font-weight:bold;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover{
+  transform: scale(1.05);
+}
+
+.focus-btn{
+  background: #ffd54f;
+  color: #5c4300;
+}
+
+.burnout-btn{
+  background: #ffca28;
+  color: #5c4300;
+}
+
+.help-btn{
+  background: #ffe082;
+  color: #5c4300;
 }
 
 #timer{
-  font-size:35px;
-  margin-top:10px;
+  margin-top: 15px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #cc9900;
 }
 
 #message{
-  margin-top:20px;
-  font-size:18px;
-  font-weight:bold;
-  color:white;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #cc9900;
+  text-align: center;
 }
+
 </style>
 
 <script>
+
 let time = 1500;
 let timerRunning = false;
 let countdown;
 
-function updateTimer() {
+function updateTimer(){
 
   let minutes = Math.floor(time / 60);
   let seconds = time % 60;
 
   seconds = seconds < 10 ? '0' + seconds : seconds;
 
-  document.getElementById('timer').innerText =
-  `${minutes}:${seconds}`;
+  document.getElementById('timer').innerHTML =
+  minutes + ':' + seconds;
 }
 
 function startFocus(){
@@ -1408,10 +1457,10 @@ function startFocus(){
 
   timerRunning = true;
 
-  document.getElementById('message').innerText =
-  'Focus mode activated. Stay productive!';
+  document.getElementById('message').innerHTML =
+  '🎯 Focus mode activated. Stay productive!';
 
-  countdown = setInterval(() => {
+  countdown = setInterval(function(){
 
     time--;
 
@@ -1421,8 +1470,8 @@ function startFocus(){
 
       clearInterval(countdown);
 
-      document.getElementById('message').innerText =
-      'Focus session complete. Take a break!';
+      document.getElementById('message').innerHTML =
+      '✅ Focus session complete. Take a short break!';
 
       timerRunning = false;
 
@@ -1434,15 +1483,16 @@ function startFocus(){
 
 function burnoutAlert(){
 
-  document.getElementById('message').innerText =
-  'You may be overworking. Drink water and rest.';
+  document.getElementById('message').innerHTML =
+  '⚠ You may be overworking. Drink water and rest.';
 }
 
 function helpSignal(){
 
-  document.getElementById('message').innerText =
-  'Silent help signal activated.';
+  document.getElementById('message').innerHTML =
+  '🆘 Silent help signal activated.';
 }
 
 updateTimer();
-    </script>
+
+        </script>
