@@ -1335,3 +1335,114 @@ tips[Math.floor(Math.random()*tips.length)];
   
 </script>  </body>  
 </html>  
+<!-- ADD THIS INSIDE YOUR BODY -->
+
+<div class="card">
+  <h2>Focus Session Mode</h2>
+  <button onclick="startFocus()">Start Focus Session</button>
+  <div id="timer">25:00</div>
+</div>
+
+<div class="card">
+  <h2>Burnout Alert</h2>
+  <button onclick="burnoutAlert()">Check Burnout</button>
+</div>
+
+<div class="card">
+  <h2>Silent Help Signal</h2>
+  <button onclick="helpSignal()">Send Help Signal</button>
+</div>
+
+<div id="message"></div>
+
+<style>
+.card{
+  background:#1f2937;
+  padding:20px;
+  margin-top:20px;
+  border-radius:15px;
+  color:white;
+}
+
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+#timer{
+  font-size:35px;
+  margin-top:10px;
+}
+
+#message{
+  margin-top:20px;
+  font-size:18px;
+  font-weight:bold;
+  color:white;
+}
+</style>
+
+<script>
+let time = 1500;
+let timerRunning = false;
+let countdown;
+
+function updateTimer() {
+
+  let minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  seconds = seconds < 10 ? '0' + seconds : seconds;
+
+  document.getElementById('timer').innerText =
+  `${minutes}:${seconds}`;
+}
+
+function startFocus(){
+
+  if(timerRunning) return;
+
+  timerRunning = true;
+
+  document.getElementById('message').innerText =
+  'Focus mode activated. Stay productive!';
+
+  countdown = setInterval(() => {
+
+    time--;
+
+    updateTimer();
+
+    if(time <= 0){
+
+      clearInterval(countdown);
+
+      document.getElementById('message').innerText =
+      'Focus session complete. Take a break!';
+
+      timerRunning = false;
+
+      time = 1500;
+    }
+
+  },1000);
+}
+
+function burnoutAlert(){
+
+  document.getElementById('message').innerText =
+  'You may be overworking. Drink water and rest.';
+}
+
+function helpSignal(){
+
+  document.getElementById('message').innerText =
+  'Silent help signal activated.';
+}
+
+updateTimer();
+    </script>
