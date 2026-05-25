@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Well Track + GlowBot</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Well Track + GlowBot</title><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><style>
 
 body{
 margin:0;
@@ -23,15 +16,11 @@ min-height:100vh;
 transition:1s;
 }
 
-/* ANIMATED BACKGROUND */
-
 @keyframes bgMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
-
-/* GLOW DECOR */
 
 .bg1,.bg2,.bg3{
 position:fixed;
@@ -41,50 +30,22 @@ z-index:-5;
 opacity:0.5;
 }
 
-.bg1{
-width:300px;
-height:300px;
-background:#fff3bf;
-top:-100px;
-left:-100px;
-}
-
-.bg2{
-width:250px;
-height:250px;
-background:#ffd43b;
-bottom:-80px;
-right:-80px;
-}
-
-.bg3{
-width:200px;
-height:200px;
-background:#ffe066;
-top:40%;
-left:60%;
-}
-
-/* STARS */
+.bg1{width:300px;height:300px;background:#fff3bf;top:-100px;left:-100px;}
+.bg2{width:250px;height:250px;background:#ffd43b;bottom:-80px;right:-80px;}
+.bg3{width:200px;height:200px;background:#ffe066;top:40%;left:60%;}
 
 .stars{
 position:fixed;
 width:100%;
 height:100%;
-background-image:
-radial-gradient(white 1px, transparent 1px);
+background-image:radial-gradient(white 1px, transparent 1px);
 background-size:40px 40px;
 opacity:0.2;
 z-index:-4;
 animation:starsMove 20s linear infinite;
 }
 
-@keyframes starsMove{
-0%{transform:translateY(0px);}
-100%{transform:translateY(-200px);}
-}
-
-/* FLOATING ICONS */
+@keyframes starsMove{0%{transform:translateY(0px);}100%{transform:translateY(-200px);}}
 
 .floating{
 position:fixed;
@@ -94,36 +55,14 @@ z-index:-3;
 opacity:0.7;
 }
 
-.floating1{
-top:15%;
-left:8%;
-}
-
-.floating2{
-top:70%;
-left:85%;
-animation-delay:1s;
-}
-
-.floating3{
-top:40%;
-left:75%;
-animation-delay:2s;
-}
-
-.floating4{
-top:80%;
-left:20%;
-animation-delay:3s;
-}
+.floating1{top:15%;left:8%;}
+.floating2{top:70%;left:85%;animation-delay:1s;}
+.floating3{top:40%;left:75%;animation-delay:2s;}
+.floating4{top:80%;left:20%;animation-delay:3s;}
 
 @keyframes floatAround{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-20px);}
-100%{transform:translateY(0px);}
+0%{transform:translateY(0px);}50%{transform:translateY(-20px);}100%{transform:translateY(0px);}
 }
-
-/* GLOW WAVE */
 
 .wave{
 position:fixed;
@@ -135,8 +74,6 @@ border-radius:50% 50% 0 0;
 filter:blur(20px);
 z-index:-2;
 }
-
-/* MOON */
 
 .moon{
 position:fixed;
@@ -150,23 +87,10 @@ box-shadow:0 0 40px white;
 z-index:-2;
 }
 
-/* SCREEN */
+.screen{display:none;padding:20px;padding-bottom:100px;}
+.active{display:block;}
 
-.screen{
-display:none;
-padding:20px;
-padding-bottom:100px;
-}
-
-.active{
-display:block;
-}
-
-h1,h2{
-text-align:center;
-}
-
-/* CARDS */
+h1,h2{text-align:center;}
 
 .card{
 background:rgba(255,255,255,0.18);
@@ -181,31 +105,10 @@ position:relative;
 overflow:hidden;
 }
 
-.card::before{
-content:'';
-position:absolute;
-top:0;
-left:-100%;
-width:100%;
-height:100%;
-background:linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,0.2),
-transparent
-);
-transition:0.7s;
-}
-
-.card:hover::before{
-left:100%;
-}
-
 .card:hover{
 transform:translateY(-5px);
+box-shadow:0 0 25px rgba(255,213,79,0.5);
 }
-
-/* BUTTONS */
 
 button{
 width:100%;
@@ -218,1281 +121,148 @@ color:white;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.03);
-box-shadow:0 0 20px rgba(255,255,255,0.5);
-}
-
-.small{
-width:30%;
-display:inline-block;
-}
-
-/* INPUTS */
-
-input{
-width:100%;
-padding:12px;
-border:none;
-border-radius:12px;
-margin-top:8px;
-box-sizing:border-box;
-}
-
-/* NAV */
-
-.nav{
-position:fixed;
-bottom:0;
-width:100%;
-display:flex;
-justify-content:space-around;
-padding:12px;
-background:rgba(255,255,255,0.2);
-backdrop-filter:blur(10px);
-}
-
-.nav button{
-width:auto;
-margin:0;
-font-size:18px;
-}
-
-/* GLOWBOT */
-
-.robotGlow{
-width:170px;
-height:170px;
-margin:auto;
-border-radius:40px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:white;
-box-shadow:0 0 60px white;
-animation:float 3s infinite ease-in-out;
-transition:0.5s;
-font-size:85px;
+transition:0.2s;
 position:relative;
 overflow:hidden;
 }
 
-.robotGlow::after{
-content:'';
-position:absolute;
-width:250px;
-height:250px;
-background:rgba(255,255,255,0.3);
-border-radius:50%;
-animation:pulse 3s infinite;
+button:active{
+transform:scale(0.97);
 }
 
-@keyframes pulse{
-0%{transform:scale(0.8);opacity:0.5;}
-100%{transform:scale(1.3);opacity:0;}
+.small{width:30%;display:inline-block;}
+
+input{
+width:100%;padding:12px;border:none;border-radius:12px;margin-top:8px;box-sizing:border-box;}
+
+.nav{
+position:fixed;bottom:0;width:100%;display:flex;justify-content:space-around;padding:12px;background:rgba(255,255,255,0.2);backdrop-filter:blur(10px);
 }
 
-@keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0px);}
+.nav button{width:auto;margin:0;font-size:18px;}
+
+.robotGlow{
+width:170px;height:170px;margin:auto;border-radius:40px;display:flex;align-items:center;justify-content:center;background:white;box-shadow:0 0 60px white;animation:float 3s infinite ease-in-out;font-size:85px;transition:0.5s;position:relative;
 }
 
-/* CHAT */
-
-.chatBox{
-height:220px;
-overflow-y:auto;
-background:rgba(255,255,255,0.2);
-padding:10px;
-border-radius:15px;
-margin-top:10px;
+.robotGlow.pulse{
+animation:pulseGlow 0.6s ease;
 }
 
-.message{
-padding:10px;
-border-radius:12px;
-margin-bottom:10px;
-width:80%;
-color:black;
-}
-
-.user{
-background:#ffe066;
-margin-left:auto;
-}
-
-.bot{
-background:white;
-}
-
-/* BREATH */
-
-.breathCircle{
-width:120px;
-height:120px;
-border-radius:50%;
-background:#ffd43b;
-margin:20px auto;
-animation:breathe 4s infinite;
-box-shadow:0 0 40px yellow;
-}
-
-@keyframes breathe{
-0%{transform:scale(0.8);}
+@keyframes pulseGlow{
+0%{transform:scale(1);}
 50%{transform:scale(1.1);}
-100%{transform:scale(0.8);}
+100%{transform:scale(1);}
 }
 
-/* PROGRESS */
+.breathCircle{width:120px;height:120px;border-radius:50%;background:#ffd43b;margin:20px auto;animation:breathe 4s infinite;box-shadow:0 0 40px yellow;}
 
-.progress{
-width:100%;
-height:20px;
-background:white;
-border-radius:20px;
-overflow:hidden;
-margin-top:10px;
-}
+@keyframes breathe{0%{transform:scale(0.8);}50%{transform:scale(1.1);}100%{transform:scale(0.8);}}
 
-.bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,#fcc419,#ffd43b);
+.progress{width:100%;height:20px;background:white;border-radius:20px;overflow:hidden;margin-top:10px;}
+.bar{height:100%;width:0%;background:linear-gradient(90deg,#fcc419,#ffd43b);transition:1s;}
+
+.center{text-align:center;}
+
+/* TOAST */
+.toast{
+position:fixed;
+bottom:80px;
+left:50%;
+transform:translateX(-50%);
+background:#fff3bf;
+color:#5c4300;
+padding:12px 18px;
+border-radius:12px;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
+opacity:0;
 transition:0.5s;
+z-index:999;
 }
 
-/* GARDEN */
+.toast.show{opacity:1;}
 
-.plant{
-font-size:90px;
-text-align:center;
-animation:float 4s infinite;
-}
-
-.ecosystem{
-font-size:75px;
-text-align:center;
-animation:float 5s infinite;
-}
-
-.crystal{
-font-size:70px;
-text-align:center;
-animation:float 3s infinite;
-}
-
-.center{
-text-align:center;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="bg1"></div>
+</style></head><body><div class="bg1"></div>
 <div class="bg2"></div>
 <div class="bg3"></div>
-
-<div class="stars"></div>
-
-<div class="floating floating1">✨</div>
+<div class="stars"></div><div class="floating floating1">✨</div>
 <div class="floating floating2">🌟</div>
 <div class="floating floating3">⭐</div>
-<div class="floating floating4">💫</div>
-
-<div class="moon"></div>
-
-<div class="wave"></div>
-
-<!-- HOME -->
-
-<div id="home" class="screen active">
-
-<h1>Well Track</h1>
-
-<div class="card">
-
+<div class="floating floating4">💫</div><div class="moon"></div>
+<div class="wave"></div><div class="toast" id="toast"></div><div id="home" class="screen active"><h1>Well Track</h1><div class="card">
 <h3>👤 Your Name</h3>
-
-<input id="nameInput"
-placeholder="Enter your name">
-
-<button onclick="saveName()">
-Save Name
-</button>
-
+<input id="nameInput" placeholder="Enter your name">
+<button onclick="saveName()">Save Name</button>
 <p id="username"></p>
-
-</div>
-
-<div class="card">
-
-<h3>🔥 Streak:
-<span id="streak">0</span></h3>
-
-<h3>⭐ Points:
-<span id="points">0</span></h3>
-
-<h3>🏆 Badge:
-<span id="badge">Beginner</span></h3>
-
-</div>
-
-<div class="card">
-
+</div><div class="card">
+<h3>🔥 Streak: <span id="streak">0</span></h3>
+<h3>⭐ Points: <span id="points">0</span></h3>
+<h3>🏆 Badge: <span id="badge">Beginner</span></h3>
+</div><div class="card">
 <h3>💡 Daily Tip</h3>
-
 <p id="tip"></p>
-
-</div>
-
-<div class="card">
-
+</div><div class="card">
 <h3>⚡ Body Energy Sync</h3>
-
-<p id="energyText">
-GlowBot energy is stable 🌿
-</p>
-
-<div class="progress">
-<div id="energyBar"
-class="bar"
-style="width:70%;">
-</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- MENTAL -->
-
-<div id="mental" class="screen">
-
-<h2>🌟 GlowBot</h2>
-
-<div class="card">
-
-<div id="robotGlow"
-class="robotGlow">
-🌟
-</div>
-
-<p id="robotText"
-class="center">
-GlowBot is ready ✨
-</p>
-
-</div>
-
-<div class="card">
-
+<p id="energyText">GlowBot energy is stable 🌿</p>
+<div class="progress"><div id="energyBar" class="bar" style="width:70%"></div></div>
+</div></div><div id="mental" class="screen"><h2>🌟 GlowBot</h2><div class="card">
+<div id="robotGlow" class="robotGlow">🌟</div>
+<p id="robotText" class="center">GlowBot is ready ✨</p>
+</div><div class="card">
 <h3>Mood Check</h3>
-
-<button class="small"
-onclick="setMood('happy')">Happy</button>
-
-<button class="small"
-onclick="setMood('sad')">Sad</button>
-
-<button class="small"
-onclick="setMood('alright')">Alright</button>
-
-<button class="small"
-onclick="setMood('angry')">Angry</button>
-
-<button class="small"
-onclick="setMood('stressed')">Stressed</button>
-
-<button class="small"
-onclick="setMood('confused')">Confused</button>
-
-<button class="small"
-onclick="setMood('tired')">Tired</button>
-
-<button class="small"
-onclick="setMood('calm')">Calm</button>
-
-<button class="small"
-onclick="setMood('anxiety')">Anxiety</button>
-
+<button class="small" onclick="setMood('happy')">Happy</button>
+<button class="small" onclick="setMood('sad')">Sad</button>
+<button class="small" onclick="setMood('calm')">Calm</button>
 <p id="moodText"></p>
-
-</div>
-
-<div class="card">
-
-<h3>💎 Emotion Crystal</h3>
-
-<div id="crystal"
-class="crystal">
-💎
-</div>
-
-</div>
-
-<div class="card">
-
+</div><div class="card">
 <h3>🌬 Breathing Exercise</h3>
-
 <div class="breathCircle"></div>
-
-<button onclick="breathing()">
-Start
-</button>
-
+<button onclick="breathing()">Start</button>
 <p id="breath"></p>
+</div></div><div class="nav">
+<button onclick="show('home')"><i class="fa-solid fa-house"></i></button>
+<button onclick="show('mental')"><i class="fa-solid fa-brain"></i></button>
+</div><script>
 
-</div>
+function show(s){
+document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+document.getElementById(s).classList.add('active');
+}
 
-<div class="card">
-
-<h3>🤖 Glow AI Support</h3>
-
-<div class="chatBox"
-id="chatBox">
-
-<div class="message bot">
-Hi, I’m Glow AI 🌟
-Tell me how you feel today.
-</div>
-
-</div>
-
-<input id="chatInput"
-placeholder="Talk to Glow AI...">
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-</div>
-
-</div>
-
-<!-- NAV -->
-
-<div class="nav">
-
-<button onclick="show('home')">
-<i class="fa-solid fa-house"></i>
-</button>
-
-<button onclick="show('mental')">
-<i class="fa-solid fa-brain"></i>
-</button>
-
-</div>
-
-<script>
-
-function show(screen){
-
-document.querySelectorAll('.screen')
-.forEach(x=>x.classList.remove('active'));
-
-document.getElementById(screen)
-.classList.add('active');
-
+function toast(msg){
+let t=document.getElementById('toast');
+t.innerText=msg;
+t.classList.add('show');
+setTimeout(()=>t.classList.remove('show'),2000);
 }
 
 function saveName(){
-
 let n=document.getElementById('nameInput').value;
-
-document.getElementById('username')
-.innerText='Hi '+n+' 👋';
-
+document.getElementById('username').innerText='Hi '+n+' 👋';
+toast('Name saved!');
 }
 
 function setMood(m){
-
 let glow=document.getElementById('robotGlow');
-let text=document.getElementById('robotText');
-let crystal=document.getElementById('crystal');
-
-if(m=='happy'){
-
-document.body.style.background=
-'linear-gradient(135deg,#fff3bf,#ffe066,#ffd43b)';
-
-glow.style.background='#ffe066';
-glow.style.boxShadow='0 0 60px yellow';
-
-crystal.innerText='🌟';
-
-text.innerText='Bright energy detected ✨';
-
-}
-
-if(m=='sad'){
-
-document.body.style.background=
-'linear-gradient(135deg,#74c0fc,#4dabf7,#a5d8ff)';
-
-glow.style.background='#74c0fc';
-glow.style.boxShadow='0 0 60px blue';
-
-crystal.innerText='💙';
-
-text.innerText='Take things slowly today 💙';
-
-}
-
-if(m=='anxiety'){
-
-document.body.style.background=
-'linear-gradient(135deg,#ffd8a8,#ffc078,#ffe8cc)';
-
-glow.style.background='#ffc078';
-glow.style.boxShadow='0 0 60px peachpuff';
-
-crystal.innerText='🍑';
-
-text.innerText='Take deep breaths slowly 🌬';
-
-}
-
+glow.classList.add('pulse');
+setTimeout(()=>glow.classList.remove('pulse'),600);
+toast('Mood updated!');
 }
 
 function breathing(){
-
-document.getElementById('breath')
-.innerText='Inhale... Hold... Exhale... 🌬';
-
+document.getElementById('breath').innerText='Inhale... Exhale... 🌬';
+toast('Relax mode on');
 }
 
-function sendMessage(){
-
-let input=
-document.getElementById('chatInput');
-
-let chat=
-document.getElementById('chatBox');
-
-let text=input.value;
-
-if(text=="") return;
-
-chat.innerHTML +=
-'<div class="message user">'+
-text+
-'</div>';
-
-chat.innerHTML +=
-'<div class="message bot">I understand 🌿</div>';
-
-input.value='';
-
-chat.scrollTop=
-chat.scrollHeight;
-
-}
-
-let tips=[
-
-'Drink more water 💧',
-'Take breaks while studying 📚',
-'Sleep early tonight 😴',
-'Talk to a friend 💬',
-'Stretch your body 🏃',
-'Write 3 good things daily ✨'
-
-];
-
-document.getElementById('tip').innerText=
-tips[Math.floor(Math.random()*tips.length)];
-
-</script>
-
-</body>
-  </html>
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Well Track + GlowBot</title>  <link rel="stylesheet"  
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">  <style>  
-  
-body{  
-margin:0;  
-font-family:Arial,sans-serif;  
-background:linear-gradient(135deg,#ffe066,#ffd43b,#fff3bf,#fcc419);  
-background-size:400% 400%;  
-animation:bgMove 12s ease infinite;  
-color:white;  
-overflow-x:hidden;  
-min-height:100vh;  
-transition:1s;  
-}  
-  
-/* Animated Background */  
-  
-@keyframes bgMove{  
-0%{background-position:0% 50%;}  
-50%{background-position:100% 50%;}  
-100%{background-position:0% 50%;}  
-}  
-  
-/* Glow Decorations */  
-  
-.bg1,.bg2,.bg3{  
-position:fixed;  
-border-radius:50%;  
-filter:blur(80px);  
-z-index:-2;  
-opacity:0.5;  
-}  
-  
-.bg1{  
-width:300px;  
-height:300px;  
-background:#fff3bf;  
-top:-100px;  
-left:-100px;  
-}  
-  
-.bg2{  
-width:250px;  
-height:250px;  
-background:#ffd43b;  
-bottom:-80px;  
-right:-80px;  
-}  
-  
-.bg3{  
-width:200px;  
-height:200px;  
-background:#ffe066;  
-top:40%;  
-left:60%;  
-}  
-  
-/* Floating Particles */  
-  
-.sparkle{  
-position:fixed;  
-width:20px;  
-height:20px;  
-background:white;  
-border-radius:50%;  
-opacity:0.4;  
-animation:floaty 6s infinite;  
-z-index:-1;  
-}  
-  
-.s1{top:20%;left:10%;}  
-.s2{top:70%;left:80%;}  
-.s3{top:40%;left:50%;}  
-  
-@keyframes floaty{  
-0%{transform:translateY(0px);}  
-50%{transform:translateY(-20px);}  
-100%{transform:translateY(0px);}  
-}  
-  
-/* Screens */  
-  
-.screen{  
-display:none;  
-padding:20px;  
-padding-bottom:100px;  
-}  
-  
-.active{  
-display:block;  
-}  
-  
-h1,h2{  
-text-align:center;  
-}  
-  
-/* Cards */  
-  
-.card{  
-background:rgba(255,255,255,0.18);  
-backdrop-filter:blur(14px);  
-border-radius:22px;  
-padding:20px;  
-margin:15px 0;  
-border:1px solid rgba(255,255,255,0.25);  
-box-shadow:0 8px 32px rgba(0,0,0,0.15);  
-transition:0.3s;  
-}  
-  
-.card:hover{  
-transform:translateY(-5px);  
-}  
-  
-/* Buttons */  
-  
-button{  
-width:100%;  
-padding:12px;  
-margin-top:10px;  
-border:none;  
-border-radius:15px;  
-background:linear-gradient(45deg,#f59f00,#fcc419);  
-color:white;  
-font-size:16px;  
-font-weight:bold;  
-cursor:pointer;  
-transition:0.3s;  
-}  
-  
-button:hover{  
-transform:scale(1.03);  
-}  
-  
-.small{  
-width:30%;  
-display:inline-block;  
-}  
-  
-/* Inputs */  
-  
-input{  
-width:100%;  
-padding:12px;  
-border:none;  
-border-radius:12px;  
-margin-top:8px;  
-box-sizing:border-box;  
-}  
-  
-/* Navigation */  
-  
-.nav{  
-position:fixed;  
-bottom:0;  
-width:100%;  
-display:flex;  
-justify-content:space-around;  
-padding:12px;  
-background:rgba(255,255,255,0.2);  
-backdrop-filter:blur(10px);  
-}  
-  
-.nav button{  
-width:auto;  
-margin:0;  
-font-size:18px;  
-}  
-  
-/* GlowBot */  
-  
-.robotGlow{  
-width:160px;  
-height:160px;  
-margin:auto;  
-border-radius:35px;  
-display:flex;  
-align-items:center;  
-justify-content:center;  
-background:white;  
-box-shadow:0 0 60px white;  
-animation:float 3s infinite ease-in-out;  
-transition:0.5s;  
-font-size:80px;  
-}  
-  
-@keyframes float{  
-0%{transform:translateY(0px);}  
-50%{transform:translateY(-10px);}  
-100%{transform:translateY(0px);}  
-}  
-  
-.center{  
-text-align:center;  
-}  
-  
-.progress{  
-width:100%;  
-height:20px;  
-background:white;  
-border-radius:20px;  
-overflow:hidden;  
-margin-top:10px;  
-}  
-  
-.bar{  
-height:100%;  
-width:0%;  
-background:#fcc419;  
-transition:0.5s;  
-}  
-  
-.plant{  
-font-size:80px;  
-text-align:center;  
-}  
-  
-.crystal{  
-font-size:60px;  
-text-align:center;  
-}  
-  
-</style>  </head>  <body>  <!-- Background -->  <div class="bg1"></div>  
-<div class="bg2"></div>  
-<div class="bg3"></div>  <div class="sparkle s1"></div>  
-<div class="sparkle s2"></div>  
-<div class="sparkle s3"></div>  <!-- HOME -->  <div id="home" class="screen active">  <h1>Well Track</h1>  <div class="card">  <h3>👤 Your Name</h3>  <input id="nameInput"  
-placeholder="Enter your name">
-
-<button onclick="saveName()">  
-Save Name  
-</button>  <p id="username"></p>  </div>  <div class="card">  <h3>🔥 Streak:  
-<span id="streak">0</span></h3>  <h3>⭐ Points:  
-<span id="points">0</span></h3>  <h3>🏆 Badge:  
-<span id="badge">Beginner</span></h3>  </div>  <div class="card">  <h3>💡 Daily Tip</h3>  <p id="tip"></p>  </div>  </div>  <!-- GLOWBOT -->  <div id="mental" class="screen">  <h2>🌟 GlowBot</h2>  <div class="card">  <div id="robotGlow" class="robotGlow">  
-🌟  
-</div>  <p id="robotText" class="center">  
-GlowBot is ready ✨  
-</p>  </div>  <div class="card">  <h3>Mood Check</h3>  <button class="small"  
-onclick="setMood('happy')">
-Happy
-</button>
-
-<button class="small"  
-onclick="setMood('sad')">
-Sad
-</button>
-
-<button class="small"  
-onclick="setMood('alright')">
-Alright
-</button>
-
-<button class="small"  
-onclick="setMood('angry')">
-Angry
-</button>
-
-<button class="small"  
-onclick="setMood('stressed')">
-Stressed
-</button>
-
-<button class="small"  
-onclick="setMood('confused')">
-Confused
-</button>
-
-<button class="small"  
-onclick="setMood('tired')">
-Tired
-</button>
-
-<button class="small"  
-onclick="setMood('calm')">
-Calm
-</button>
-
-<button class="small"  
-onclick="setMood('anxiety')">
-Anxiety
-</button>
-
-<p id="moodText"></p>  </div>  <div class="card">  <h3>💎 Emotion Crystal</h3>  <div id="crystal" class="crystal">  
-💎  
-</div>  </div>  <div class="card">  <h3>🌬 Breathing Exercise</h3>  <button onclick="breathing()">  
-Start  
-</button>  <p id="breath"></p>  </div>  <div class="card">  <h3>📝 Reflection</h3>  <input id="reflectionInput"  
-placeholder="Write about your day">
-
-<button onclick="saveReflection()">  
-Save  
-</button>  <p id="reflectionText"></p>  </div>  </div>  <!-- PHYSICAL -->  <div id="physical" class="screen">  <h2>🏃 Physical Health</h2>  <div class="card">  <h3>💧 Water Intake</h3>  <button onclick="addWater()">  
-+1 Glass  
-</button>  <p id="waterText">  
-0 glasses  
-</p>  </div>  <div class="card">  <h3>😴 Sleep Tracker</h3>  <input id="sleepInput"  
-placeholder="Hours slept">
-
-<button onclick="saveSleep()">  
-Save Sleep  
-</button>  <p id="sleepText"></p>  </div>  <div class="card">  <h3>🏋 Exercise</h3>  <button onclick="exerciseDone()">  
-Workout Complete  
-</button>  </div>  </div>  <!-- GARDEN -->  <div id="garden" class="screen">  <h2>🌱 Growth Garden</h2>  <div class="card">  <div id="plant" class="plant">  
-🌱  
-</div>  <p class="center">  
-Healthy habits grow your garden ✨  
-</p>  <div class="progress">  
-<div id="bar" class="bar"></div>  
-</div>  </div>  </div>  <!-- INSIGHTS -->  <div id="insights" class="screen">  <h2>📊 Smart Insights</h2>  <div class="card">  <p id="insightText">  
-Start tracking to unlock insights ✨  
-</p>  </div>  </div>  <!-- NAVIGATION -->  <div class="nav">  <button onclick="show('home')">  
-<i class="fa-solid fa-house"></i>  
-</button>  <button onclick="show('mental')">  
-<i class="fa-solid fa-brain"></i>  
-</button>  <button onclick="show('physical')">  
-<i class="fa-solid fa-heart-pulse"></i>  
-</button>  <button onclick="show('garden')">  
-<i class="fa-solid fa-seedling"></i>  
-</button>  <button onclick="show('insights')">  
-<i class="fa-solid fa-chart-line"></i>  
-</button>  </div>  <script>  
-  
-let points=0;  
-let streak=0;  
-let water=0;  
-let plantLevel=0;  
-  
-function show(screen){  
-  
-document.querySelectorAll('.screen')  
-.forEach(x=>x.classList.remove('active'));  
-  
-document.getElementById(screen)  
-.classList.add('active');  
-  
-}  
-  
-function saveName(){  
-  
-let n=document.getElementById('nameInput').value;  
-  
-document.getElementById('username')  
-.innerText='Hi '+n+' 👋';  
-  
-}  
-  
-function addPoints(){  
-  
-points++;  
-streak++;  
-  
-document.getElementById('points')  
-.innerText=points;  
-  
-document.getElementById('streak')  
-.innerText=streak;  
-  
-if(streak>3){  
-document.getElementById('badge')  
-.innerText='🏆 Rising Star';  
-}  
-  
-if(streak>7){  
-document.getElementById('badge')  
-.innerText='🔥 Wellness Master';  
-}  
-  
-growPlant();  
-  
-}  
-  
-function growPlant(){  
-  
-plantLevel+=10;  
-  
-if(plantLevel>100){  
-plantLevel=100;  
-}  
-  
-document.getElementById('bar')  
-.style.width=plantLevel+'%';  
-  
-if(plantLevel<30){  
-document.getElementById('plant')  
-.innerText='🌱';  
-}  
-  
-else if(plantLevel<70){  
-document.getElementById('plant')  
-.innerText='🌿';  
-}  
-  
-else{  
-document.getElementById('plant')  
-.innerText='🌸';  
-}  
-  
-}  
-  
-function setMood(m){  
-  
-let glow=document.getElementById('robotGlow');  
-let text=document.getElementById('robotText');  
-let crystal=document.getElementById('crystal');  
-  
-document.getElementById('moodText')  
-.innerText='Mood: '+m;  
-  
-/* HAPPY */  
-  
-if(m=='happy'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#fff3bf,#ffe066,#ffd43b)';  
-  
-glow.style.background='#ffe066';  
-glow.style.boxShadow='0 0 60px yellow';  
-  
-crystal.innerText='🌟';  
-  
-text.innerText='Bright energy detected ✨';  
-  
-}  
-  
-/* SAD */  
-  
-if(m=='sad'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#74c0fc,#4dabf7,#a5d8ff)';  
-  
-glow.style.background='#74c0fc';  
-glow.style.boxShadow='0 0 60px blue';  
-  
-crystal.innerText='💙';  
-  
-text.innerText='Take things slowly today 💙';  
-  
-}  
-  
-/* ALRIGHT */  
-  
-if(m=='alright'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#8ce99a,#69db7c,#51cf66)';  
-  
-glow.style.background='#51cf66';  
-glow.style.boxShadow='0 0 60px green';  
-  
-crystal.innerText='💚';  
-  
-text.innerText='Steady and balanced 🌿';  
-  
-}  
-  
-/* ANGRY */  
-  
-if(m=='angry'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#ff8787,#ff6b6b,#fa5252)';  
-  
-glow.style.background='#ff6b6b';  
-glow.style.boxShadow='0 0 60px red';  
-  
-crystal.innerText='❤️';  
-  
-text.innerText='Pause and breathe ❤️';  
-  
-}  
-  
-/* STRESSED */  
-  
-if(m=='stressed'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#ffc078,#ffa94d,#ff922b)';  
-  
-glow.style.background='#ff922b';  
-glow.style.boxShadow='0 0 60px orange';  
-  
-crystal.innerText='🧡';  
-  
-text.innerText='You need a small break 🌤';  
-  
-}  
-  
-/* CONFUSED */  
-  
-if(m=='confused'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#faa2c1,#f783ac,#ff8fab)';  
-  
-glow.style.background='#ff8fab';  
-glow.style.boxShadow='0 0 60px pink';  
-  
-crystal.innerText='🩷';  
-  
-text.innerText='It is okay to feel unsure 💭';  
-  
-}  
-  
-/* TIRED */  
-  
-if(m=='tired'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#c0a0ff,#b197fc,#9775fa)';  
-  
-glow.style.background='#9775fa';  
-glow.style.boxShadow='0 0 60px purple';  
-  
-crystal.innerText='💜';  
-  
-text.innerText='Rest is important 😴';  
-  
-}  
-  
-/* CALM */  
-  
-if(m=='calm'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#dee2e6,#ced4da,#adb5bd)';  
-  
-glow.style.background='#adb5bd';  
-glow.style.boxShadow='0 0 60px grey';  
-  
-crystal.innerText='🩶';  
-  
-text.innerText='Peaceful energy detected 🌙';  
-  
-}  
-  
-/* ANXIETY */  
-  
-if(m=='anxiety'){  
-  
-document.body.style.background=  
-'linear-gradient(135deg,#ffd8a8,#ffc078,#ffe8cc)';  
-  
-glow.style.background='#ffc078';  
-glow.style.boxShadow='0 0 60px peachpuff';  
-  
-crystal.innerText='🍑';  
-  
-text.innerText='Take deep breaths slowly 🌬';  
-  
-}  
-  
-addPoints();  
-  
-}  
-  
-function breathing(){  
-  
-document.getElementById('breath')  
-.innerText='Inhale... Hold... Exhale... 🌬';  
-  
-}  
-  
-function saveReflection(){  
-  
-let r=document.getElementById('reflectionInput').value;  
-  
-document.getElementById('reflectionText')  
-.innerText=r;  
-  
-addPoints();  
-  
-}  
-  
-function addWater(){  
-  
-water++;  
-  
-document.getElementById('waterText')  
-.innerText=water+' glasses';  
-  
-addPoints();  
-  
-}  
-  
-function saveSleep(){  
-  
-let s=document.getElementById('sleepInput').value;  
-  
-document.getElementById('sleepText')  
-.innerText=s+' hours slept';  
-  
-addPoints();  
-  
-}  
-  
-function exerciseDone(){  
-  
-alert('Great job exercising 💪');  
-  
-addPoints();  
-  
-}  
-  
-let tips=[  
-  
-'Drink more water 💧',  
-'Take breaks while studying 📚',  
-'Sleep early tonight 😴',  
-'Talk to a friend 💬',  
-'Stretch your body 🏃',  
-'Write 3 good things daily ✨'  
-  
-];  
-  
-document.getElementById('tip').innerText=  
-tips[Math.floor(Math.random()*tips.length)];  
-  
-</script>  </body>  
-</html>  
-
-<!-- WELL TRACK FEATURES -->
-
-<div class="feature-card">
-
-  <h2>🎯 Focus Session Mode</h2>
-
-  <button class="focus-btn" onclick="startFocus()">
-    Start Focus Session
-  </button>
-
-  <div id="timer">25:00</div>
-
-</div>
-
-<div class="feature-card">
-
-  <h2>⚠ Burnout Alert</h2>
-
-  <button class="burnout-btn" onclick="burnoutAlert()">
-    Check Burnout
-  </button>
-
-</div>
-
-<div class="feature-card">
-
-  <h2>🆘 Silent Help Signal</h2>
-
-  <button class="help-btn" onclick="helpSignal()">
-    Send Help Signal
-  </button>
-
-</div>
-
-<div id="message"></div>
-
-<style>
-
-.feature-card{
-  background: #fff8dc;
-  border: 2px solid #ffd54f;
-  border-radius: 20px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 0 15px rgba(255, 213, 79, 0.4);
-}
-
-.feature-card h2{
-  color: #e6a700;
-  margin-bottom: 15px;
-}
-
-button{
-  padding: 12px 22px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-button:hover{
-  transform: scale(1.05);
-}
-
-.focus-btn{
-  background: #ffd54f;
-  color: #5c4300;
-}
-
-.burnout-btn{
-  background: #ffca28;
-  color: #5c4300;
-}
-
-.help-btn{
-  background: #ffe082;
-  color: #5c4300;
-}
-
-#timer{
-  margin-top: 15px;
-  font-size: 36px;
-  font-weight: bold;
-  color: #cc9900;
-}
-
-#message{
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #cc9900;
-  text-align: center;
-}
-
-</style>
-
-<script>
-
-let time = 1500;
-let timerRunning = false;
-let countdown;
-
-function updateTimer(){
-
-  let minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-
-  seconds = seconds < 10 ? '0' + seconds : seconds;
-
-  document.getElementById('timer').innerHTML =
-  minutes + ':' + seconds;
-}
-
-function startFocus(){
-
-  if(timerRunning) return;
-
-  timerRunning = true;
-
-  document.getElementById('message').innerHTML =
-  '🎯 Focus mode activated. Stay productive!';
-
-  countdown = setInterval(function(){
-
-    time--;
-
-    updateTimer();
-
-    if(time <= 0){
-
-      clearInterval(countdown);
-
-      document.getElementById('message').innerHTML =
-      '✅ Focus session complete. Take a short break!';
-
-      timerRunning = false;
-
-      time = 1500;
-    }
-
-  },1000);
-}
-
-function burnoutAlert(){
-
-  document.getElementById('message').innerHTML =
-  '⚠ You may be overworking. Drink water and rest.';
-}
-
-function helpSignal(){
-
-  document.getElementById('message').innerHTML =
-  '🆘 Silent help signal activated.';
-}
-
-updateTimer();
-
-        </script>
+// energy animation
+window.onload=function(){
+let bar=document.getElementById('energyBar');
+bar.style.width='0%';
+setTimeout(()=>bar.style.width='70%',500);
+
+let tips=['Drink water 💧','Sleep early 😴','Take breaks 📚','Stretch 🏃','Stay positive ✨'];
+document.getElementById('tip').innerText=tips[Math.floor(Math.random()*tips.length)];
+};
+
+</script></body>
+</html>
