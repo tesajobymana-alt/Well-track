@@ -11,238 +11,107 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ffe066,#ffd43b,#fff3bf,#fcc419);
-background-size:400% 400%;
-animation:bgMove 12s ease infinite;
-color:white;
-overflow-x:hidden;
+}
+
+body{
+background:linear-gradient(135deg,#ffe066,#ffd43b,#fff3bf);
 min-height:100vh;
 transition:1s;
+overflow-x:hidden;
 }
 
-/* ANIMATED BACKGROUND */
+/* TOP BAR */
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+.topbar{
+padding:18px;
+background:linear-gradient(135deg,#ffd43b,#ffe066);
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-weight:bold;
+font-size:20px;
+position:sticky;
+top:0;
+z-index:100;
 }
 
-/* GLOW DECOR */
-
-.bg1,.bg2,.bg3{
-position:fixed;
-border-radius:50%;
-filter:blur(80px);
-z-index:-5;
-opacity:0.5;
-}
-
-.bg1{
-width:300px;
-height:300px;
-background:#fff3bf;
-top:-100px;
-left:-100px;
-}
-
-.bg2{
-width:250px;
-height:250px;
-background:#ffd43b;
-bottom:-80px;
-right:-80px;
-}
-
-.bg3{
-width:200px;
-height:200px;
-background:#ffe066;
-top:40%;
-left:60%;
-}
-
-/* STARS */
-
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-background-image:
-radial-gradient(white 1px, transparent 1px);
-background-size:40px 40px;
-opacity:0.2;
-z-index:-4;
-animation:starsMove 20s linear infinite;
-}
-
-@keyframes starsMove{
-0%{transform:translateY(0px);}
-100%{transform:translateY(-200px);}
-}
-
-/* FLOATING ICONS */
-
-.floating{
-position:fixed;
-font-size:30px;
-animation:floatAround 6s infinite ease-in-out;
-z-index:-3;
-opacity:0.7;
-}
-
-.floating1{
-top:15%;
-left:8%;
-}
-
-.floating2{
-top:70%;
-left:85%;
-animation-delay:1s;
-}
-
-.floating3{
-top:40%;
-left:75%;
-animation-delay:2s;
-}
-
-.floating4{
-top:80%;
-left:20%;
-animation-delay:3s;
-}
-
-@keyframes floatAround{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-20px);}
-100%{transform:translateY(0px);}
-}
-
-/* GLOW WAVE */
-
-.wave{
-position:fixed;
-bottom:0;
-width:100%;
-height:120px;
-background:rgba(255,255,255,0.15);
-border-radius:50% 50% 0 0;
-filter:blur(20px);
-z-index:-2;
-}
-
-/* MOON */
-
-.moon{
-position:fixed;
-top:40px;
-right:40px;
-width:90px;
-height:90px;
-background:rgba(255,255,255,0.4);
-border-radius:50%;
-box-shadow:0 0 40px white;
-z-index:-2;
-}
-
-/* SCREEN */
+/* SCREENS */
 
 .screen{
 display:none;
 padding:20px;
-padding-bottom:100px;
+padding-bottom:120px;
 }
 
 .active{
 display:block;
 }
 
-h1,h2{
-text-align:center;
-}
-
 /* CARDS */
 
 .card{
-background:rgba(255,255,255,0.18);
-backdrop-filter:blur(14px);
+background:white;
+padding:18px;
 border-radius:24px;
-padding:20px;
-margin:15px 0;
-border:1px solid rgba(255,255,255,0.25);
-box-shadow:0 8px 32px rgba(0,0,0,0.15);
-transition:0.3s;
-position:relative;
-overflow:hidden;
-}
-
-.card::before{
-content:'';
-position:absolute;
-top:0;
-left:-100%;
-width:100%;
-height:100%;
-background:linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,0.2),
-transparent
-);
-transition:0.7s;
-}
-
-.card:hover::before{
-left:100%;
-}
-
-.card:hover{
-transform:translateY(-5px);
+margin-bottom:18px;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
 }
 
 /* BUTTONS */
 
 button{
 width:100%;
-padding:12px;
-margin-top:10px;
+padding:14px;
 border:none;
 border-radius:15px;
-background:linear-gradient(45deg,#f59f00,#fcc419);
-color:white;
-font-size:16px;
+background:linear-gradient(135deg,#fcc419,#ffd43b);
 font-weight:bold;
+font-size:16px;
+margin-top:10px;
 cursor:pointer;
 transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.03);
-box-shadow:0 0 20px rgba(255,255,255,0.5);
+transform:scale(1.02);
 }
 
 .small{
-width:30%;
-display:inline-block;
+width:auto;
+padding:10px 14px;
+margin:5px;
 }
 
-/* INPUTS */
+/* INPUT */
 
 input{
 width:100%;
-padding:12px;
-border:none;
-border-radius:12px;
-margin-top:8px;
-box-sizing:border-box;
+padding:14px;
+border-radius:14px;
+border:1px solid #ddd;
+margin-top:10px;
 }
 
-/* NAV */
+/* GLOWBOT */
+
+.robot{
+height:170px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:90px;
+background:white;
+border-radius:30px;
+box-shadow:0 0 40px rgba(255,212,59,0.7);
+transition:0.5s;
+}
+
+/* NAVIGATION */
 
 .nav{
 position:fixed;
@@ -250,65 +119,25 @@ bottom:0;
 width:100%;
 display:flex;
 justify-content:space-around;
-padding:12px;
-background:rgba(255,255,255,0.2);
-backdrop-filter:blur(10px);
+padding:14px;
+background:white;
+border-top:1px solid #eee;
 }
 
 .nav button{
+background:none;
+font-size:22px;
 width:auto;
-margin:0;
-font-size:18px;
 }
 
-/* GLOWBOT */
-
-.robotGlow{
-width:170px;
-height:170px;
-margin:auto;
-border-radius:40px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:white;
-box-shadow:0 0 60px white;
-animation:float 3s infinite ease-in-out;
-transition:0.5s;
-font-size:85px;
-position:relative;
-overflow:hidden;
-}
-
-.robotGlow::after{
-content:'';
-position:absolute;
-width:250px;
-height:250px;
-background:rgba(255,255,255,0.3);
-border-radius:50%;
-animation:pulse 3s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(0.8);opacity:0.5;}
-100%{transform:scale(1.3);opacity:0;}
-}
-
-@keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0px);}
-}
-
-/* CHAT */
+/* CHATBOT */
 
 .chatBox{
-height:220px;
+height:230px;
 overflow-y:auto;
-background:rgba(255,255,255,0.2);
-padding:10px;
+background:#f8f9fa;
 border-radius:15px;
+padding:10px;
 margin-top:10px;
 }
 
@@ -316,8 +145,7 @@ margin-top:10px;
 padding:10px;
 border-radius:12px;
 margin-bottom:10px;
-width:80%;
-color:black;
+max-width:80%;
 }
 
 .user{
@@ -329,7 +157,7 @@ margin-left:auto;
 background:white;
 }
 
-/* BREATH */
+/* BREATHING */
 
 .breathCircle{
 width:120px;
@@ -338,55 +166,70 @@ border-radius:50%;
 background:#ffd43b;
 margin:20px auto;
 animation:breathe 4s infinite;
-box-shadow:0 0 40px yellow;
 }
 
 @keyframes breathe{
-0%{transform:scale(0.8);}
-50%{transform:scale(1.1);}
-100%{transform:scale(0.8);}
+
+0%{
+transform:scale(0.8);
 }
 
-/* PROGRESS */
+50%{
+transform:scale(1.1);
+}
 
-.progress{
+100%{
+transform:scale(0.8);
+}
+
+}
+
+/* ENERGY */
+
+.energyBar{
 width:100%;
-height:20px;
-background:white;
+height:22px;
+background:#ddd;
 border-radius:20px;
 overflow:hidden;
 margin-top:10px;
 }
 
-.bar{
+.energyFill{
 height:100%;
-width:0%;
-background:linear-gradient(90deg,#fcc419,#ffd43b);
+width:75%;
+background:linear-gradient(90deg,#51cf66,#94d82d);
 transition:0.5s;
 }
 
-/* GARDEN */
-
-.plant{
-font-size:90px;
-text-align:center;
-animation:float 4s infinite;
-}
+/* ECOSYSTEM */
 
 .ecosystem{
 font-size:75px;
 text-align:center;
-animation:float 5s infinite;
+margin-top:15px;
 }
 
-.crystal{
-font-size:70px;
-text-align:center;
-animation:float 3s infinite;
-}
+/* CENTER */
 
 .center{
 text-align:center;
+}
+
+/* AURA */
+
+.aura{
+position:fixed;
+width:300px;
+height:300px;
+border-radius:50%;
+filter:blur(100px);
+opacity:0.3;
+z-index:-1;
+top:20%;
+left:20%;
+background:yellow;
+transition:1s;
 }
 
 </style>
@@ -394,77 +237,61 @@ text-align:center;
 
 <body>
 
-<div class="bg1"></div>
-<div class="bg2"></div>
-<div class="bg3"></div>
+<div class="aura" id="aura"></div>
 
-<div class="stars"></div>
+<!-- TOP -->
 
-<div class="floating floating1">✨</div>
-<div class="floating floating2">🌟</div>
-<div class="floating floating3">⭐</div>
-<div class="floating floating4">💫</div>
+<div class="topbar">
 
-<div class="moon"></div>
+<span>Well Track</span>
 
-<div class="wave"></div>
+<span>🌟 GlowBot</span>
+
+</div>
 
 <!-- HOME -->
 
 <div id="home" class="screen active">
 
-<h1>Well Track</h1>
-
 <div class="card">
 
-<h3>👤 Your Name</h3>
+<h2>👤 Profile</h2>
 
-<input id="nameInput"
+<input id="name"
 placeholder="Enter your name">
 
 <button onclick="saveName()">
 Save Name
 </button>
 
-<p id="username"></p>
+<p id="hello"></p>
 
 </div>
 
 <div class="card">
 
-<h3>🔥 Streak:
-<span id="streak">0</span></h3>
-
-<h3>⭐ Points:
-<span id="points">0</span></h3>
-
-<h3>🏆 Badge:
-<span id="badge">Beginner</span></h3>
-
-</div>
-
-<div class="card">
-
-<h3>💡 Daily Tip</h3>
-
-<p id="tip"></p>
-
-</div>
-
-<div class="card">
-
-<h3>⚡ Body Energy Sync</h3>
+<h2>⚡ GlowBot Energy</h2>
 
 <p id="energyText">
-GlowBot energy is stable 🌿
+Energy: 75%
 </p>
 
-<div class="progress">
-<div id="energyBar"
-class="bar"
-style="width:70%;">
+<div class="energyBar">
+<div class="energyFill"
+id="energyFill"></div>
 </div>
+
 </div>
+
+<div class="card">
+
+<h2>📊 Recovery Score</h2>
+
+<h1>82%</h1>
+
+<p>
+Your balance is stable today 🌿
+</p>
 
 </div>
 
@@ -474,91 +301,80 @@ style="width:70%;">
 
 <div id="mental" class="screen">
 
-<h2>🌟 GlowBot</h2>
-
 <div class="card">
 
-<div id="robotGlow"
-class="robotGlow">
+<div class="robot"
+id="robot">
 🌟
 </div>
 
-<p id="robotText"
-class="center">
-GlowBot is ready ✨
-</p>
+<h2 class="center"
+id="moodText">
+GlowBot Ready
+</h2>
 
 </div>
 
 <div class="card">
 
-<h3>Mood Check</h3>
+<h2>🌈 Mood Sync</h2>
 
 <button class="small"
-onclick="setMood('happy')">Happy</button>
-
-<button class="small"
-onclick="setMood('sad')">Sad</button>
-
-<button class="small"
-onclick="setMood('alright')">Alright</button>
-
-<button class="small"
-onclick="setMood('angry')">Angry</button>
-
-<button class="small"
-onclick="setMood('stressed')">Stressed</button>
-
-<button class="small"
-onclick="setMood('confused')">Confused</button>
-
-<button class="small"
-onclick="setMood('tired')">Tired</button>
-
-<button class="small"
-onclick="setMood('calm')">Calm</button>
-
-<button class="small"
-onclick="setMood('anxiety')">Anxiety</button>
-
-<p id="moodText"></p>
-
-</div>
-
-<div class="card">
-
-<h3>💎 Emotion Crystal</h3>
-
-<div id="crystal"
-class="crystal">
-💎
-</div>
-
-</div>
-
-<div class="card">
-
-<h3>🌬 Breathing Exercise</h3>
-
-<div class="breathCircle"></div>
-
-<button onclick="breathing()">
-Start
+onclick="setMood('happy')">
+Happy
 </button>
 
-<p id="breath"></p>
+<button class="small"
+onclick="setMood('sad')">
+Sad
+</button>
+
+<button class="small"
+onclick="setMood('alright')">
+Alright
+</button>
+
+<button class="small"
+onclick="setMood('angry')">
+Angry
+</button>
+
+<button class="small"
+onclick="setMood('stressed')">
+Stressed
+</button>
+
+<button class="small"
+onclick="setMood('confused')">
+Confused
+</button>
+
+<button class="small"
+onclick="setMood('tired')">
+Tired
+</button>
+
+<button class="small"
+onclick="setMood('calm')">
+Calm
+</button>
+
+<button class="small"
+onclick="setMood('anxiety')">
+Anxiety
+</button>
 
 </div>
 
 <div class="card">
 
-<h3>🤖 Glow AI Support</h3>
+<h2>🤖 Glow AI</h2>
 
 <div class="chatBox"
 id="chatBox">
 
 <div class="message bot">
-Hi, I’m Glow AI 🌟
+Hi, I’m Glow AI 🌟  
 Tell me how you feel today.
 </div>
 
@@ -573,142 +389,529 @@ Send
 
 </div>
 
+<div class="card">
+
+<h2>🌬 Comfort Mode</h2>
+
+<div class="breathCircle"></div>
+
+<p class="center">
+Inhale • Hold • Exhale
+</p>
+
 </div>
 
-<!-- NAV -->
+</div>
+
+<!-- PHYSICAL -->
+
+<div id="physical" class="screen">
+
+<div class="card">
+
+<h2>💧 Water Tracker</h2>
+
+<p id="waterText">
+0 glasses today
+</p>
+
+<button onclick="waterPlus()">
++1 Glass
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>😴 Sleep</h2>
+
+<input id="sleep"
+placeholder="Hours slept">
+
+<button onclick="saveSleep()">
+Save Sleep
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>🏃 Activity</h2>
+
+<button onclick="exerciseDone()">
+Workout Complete
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>⚡ Body Energy Sync</h2>
+
+<p id="syncText">
+GlowBot energy is stable 🌿
+</p>
+
+</div>
+
+</div>
+
+<!-- INSIGHTS -->
+
+<div id="insights" class="screen">
+
+<div class="card">
+
+<h2>📈 Smart Insights</h2>
+
+<p>
+• Your mood improves after exercise 💪
+</p>
+
+<p>
+• Sleep affects your emotional balance 😴
+</p>
+
+<p>
+• Stress increased this week 📚
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🌌 Emotion Ecosystem</h2>
+
+<p>
+Your emotions create a unique world.
+</p>
+
+<div class="ecosystem"
+id="ecosystem">
+🌱
+</div>
+
+</div>
+
+</div>
+
+<!-- NAVIGATION -->
 
 <div class="nav">
 
 <button onclick="show('home')">
-<i class="fa-solid fa-house"></i>
+<i class="fa fa-home"></i>
 </button>
 
 <button onclick="show('mental')">
-<i class="fa-solid fa-brain"></i>
+<i class="fa fa-brain"></i>
+</button>
+
+<button onclick="show('physical')">
+<i class="fa fa-heart"></i>
+</button>
+
+<button onclick="show('insights')">
+<i class="fa fa-chart-line"></i>
 </button>
 
 </div>
 
 <script>
 
-function show(screen){
+/* NAVIGATION */
+
+function show(id){
 
 document.querySelectorAll('.screen')
-.forEach(x=>x.classList.remove('active'));
+.forEach(s=>s.classList.remove('active'));
 
-document.getElementById(screen)
+document.getElementById(id)
 .classList.add('active');
 
 }
 
+/* PROFILE */
+
 function saveName(){
 
-let n=document.getElementById('nameInput').value;
+let name=
+document.getElementById("name").value;
 
-document.getElementById('username')
-.innerText='Hi '+n+' 👋';
+document.getElementById("hello")
+.innerText=
+"Hello "+name+" 👋";
 
 }
+
+/* MOODS */
 
 function setMood(m){
 
-let glow=document.getElementById('robotGlow');
-let text=document.getElementById('robotText');
-let crystal=document.getElementById('crystal');
+let robot=
+document.getElementById("robot");
 
-if(m=='happy'){
+let text=
+document.getElementById("moodText");
 
-document.body.style.background=
-'linear-gradient(135deg,#fff3bf,#ffe066,#ffd43b)';
+let aura=
+document.getElementById("aura");
 
-glow.style.background='#ffe066';
-glow.style.boxShadow='0 0 60px yellow';
+/* HAPPY */
 
-crystal.innerText='🌟';
-
-text.innerText='Bright energy detected ✨';
-
-}
-
-if(m=='sad'){
+if(m=="happy"){
 
 document.body.style.background=
-'linear-gradient(135deg,#74c0fc,#4dabf7,#a5d8ff)';
+"linear-gradient(135deg,#fff3bf,#ffd43b)";
 
-glow.style.background='#74c0fc';
-glow.style.boxShadow='0 0 60px blue';
+robot.innerText="🌟";
 
-crystal.innerText='💙';
+robot.style.boxShadow=
+"0 0 50px yellow";
 
-text.innerText='Take things slowly today 💙';
+text.innerText=
+"Bright energy detected ✨";
+
+aura.style.background="yellow";
 
 }
 
-if(m=='anxiety'){
+/* SAD */
+
+if(m=="sad"){
 
 document.body.style.background=
-'linear-gradient(135deg,#ffd8a8,#ffc078,#ffe8cc)';
+"linear-gradient(135deg,#74c0fc,#4dabf7)";
 
-glow.style.background='#ffc078';
-glow.style.boxShadow='0 0 60px peachpuff';
+robot.innerText="💙";
 
-crystal.innerText='🍑';
+robot.style.boxShadow=
+"0 0 50px blue";
 
-text.innerText='Take deep breaths slowly 🌬';
+text.innerText=
+"Take things slowly 💙";
+
+aura.style.background="#4dabf7";
+
+}
+
+/* ALRIGHT */
+
+if(m=="alright"){
+
+document.body.style.background=
+"linear-gradient(135deg,#8ce99a,#51cf66)";
+
+robot.innerText="💚";
+
+robot.style.boxShadow=
+"0 0 50px green";
+
+text.innerText=
+"Balanced energy 🌿";
+
+aura.style.background="green";
+
+}
+
+/* ANGRY */
+
+if(m=="angry"){
+
+document.body.style.background=
+"linear-gradient(135deg,#ff8787,#fa5252)";
+
+robot.innerText="❤️";
+
+robot.style.boxShadow=
+"0 0 50px red";
+
+text.innerText=
+"Pause and breathe ❤️";
+
+aura.style.background="red";
+
+}
+
+/* STRESSED */
+
+if(m=="stressed"){
+
+document.body.style.background=
+"linear-gradient(135deg,#ffa94d,#ff922b)";
+
+robot.innerText="🧡";
+
+robot.style.boxShadow=
+"0 0 50px orange";
+
+text.innerText=
+"Comfort mode activated 🌤";
+
+aura.style.background="orange";
+
+}
+
+/* CONFUSED */
+
+if(m=="confused"){
+
+document.body.style.background=
+"linear-gradient(135deg,#faa2c1,#f783ac)";
+
+robot.innerText="🩷";
+
+robot.style.boxShadow=
+"0 0 50px pink";
+
+text.innerText=
+"It’s okay to feel unsure 💭";
+
+aura.style.background="pink";
+
+}
+
+/* TIRED */
+
+if(m=="tired"){
+
+document.body.style.background=
+"linear-gradient(135deg,#c0a0ff,#9775fa)";
+
+robot.innerText="💜";
+
+robot.style.boxShadow=
+"0 0 50px purple";
+
+text.innerText=
+"Rest is important 😴";
+
+aura.style.background="purple";
+
+}
+
+/* CALM */
+
+if(m=="calm"){
+
+document.body.style.background=
+"linear-gradient(135deg,#dee2e6,#adb5bd)";
+
+robot.innerText="🩶";
+
+robot.style.boxShadow=
+"0 0 50px grey";
+
+text.innerText=
+"Peaceful energy 🌙";
+
+aura.style.background="grey";
+
+}
+
+/* ANXIETY */
+
+if(m=="anxiety"){
+
+document.body.style.background=
+"linear-gradient(135deg,#ffe8cc,#ffc078)";
+
+robot.innerText="🍑";
+
+robot.style.boxShadow=
+"0 0 50px peachpuff";
+
+text.innerText=
+"Breathing support activated 🌬";
+
+aura.style.background="peachpuff";
 
 }
 
 }
 
-function breathing(){
-
-document.getElementById('breath')
-.innerText='Inhale... Hold... Exhale... 🌬';
-
-}
+/* CHATBOT */
 
 function sendMessage(){
 
 let input=
-document.getElementById('chatInput');
+document.getElementById("chatInput");
 
 let chat=
-document.getElementById('chatBox');
+document.getElementById("chatBox");
 
 let text=input.value;
 
 if(text=="") return;
+
+/* USER MESSAGE */
 
 chat.innerHTML +=
 '<div class="message user">'+
 text+
 '</div>';
 
-chat.innerHTML +=
-'<div class="message bot">I understand 🌿</div>';
+/* BOT RESPONSE */
 
-input.value='';
+let response=
+"I understand 🌿";
+
+if(text.includes("sad")){
+response=
+"You’ve been carrying a lot lately 💙";
+}
+
+if(text.includes("stress")){
+response=
+"Try taking a short breathing break 🌤";
+}
+
+if(text.includes("anxious")){
+response=
+"Everything does not need to be solved at once 🌬";
+}
+
+if(text.includes("tired")){
+response=
+"Your body may need rest 😴";
+}
+
+if(text.includes("alone")){
+response=
+"You are not alone 🌟";
+}
+
+/* COMFORT MODE */
+
+if(text.includes("cry") ||
+text.includes("horrible")){
+
+response=
+"Comfort mode activated 🌙";
+
+document.body.style.background=
+"linear-gradient(135deg,#adb5bd,#dee2e6)";
+
+}
+
+/* BOT MESSAGE */
+
+chat.innerHTML +=
+'<div class="message bot">'+
+response+
+'</div>';
+
+input.value="";
 
 chat.scrollTop=
 chat.scrollHeight;
 
 }
 
-let tips=[
+/* ENERGY SYSTEM */
 
-'Drink more water 💧',
-'Take breaks while studying 📚',
-'Sleep early tonight 😴',
-'Talk to a friend 💬',
-'Stretch your body 🏃',
-'Write 3 good things daily ✨'
+let energy=75;
 
-];
+function updateEnergy(add){
 
-document.getElementById('tip').innerText=
-tips[Math.floor(Math.random()*tips.length)];
+energy += add;
+
+if(energy>100){
+energy=100;
+}
+
+document.getElementById("energyText")
+.innerText=
+"Energy: "+energy+"%";
+
+document.getElementById("energyFill")
+.style.width=
+energy+"%";
+
+}
+
+/* WATER */
+
+let water=0;
+
+function waterPlus(){
+
+water++;
+
+document.getElementById("waterText")
+.innerText=
+water+" glasses today";
+
+updateEnergy(5);
+
+document.getElementById("syncText")
+.innerText=
+"Hydration boosted GlowBot 💧";
+
+updateEcosystem();
+
+}
+
+/* SLEEP */
+
+function saveSleep(){
+
+updateEnergy(10);
+
+document.getElementById("syncText")
+.innerText=
+"Sleep restored GlowBot energy 😴";
+
+updateEcosystem();
+
+}
+
+/* EXERCISE */
+
+function exerciseDone(){
+
+updateEnergy(15);
+
+document.getElementById("syncText")
+.innerText=
+"Movement boosted emotional balance 💪";
+
+updateEcosystem();
+
+}
+
+/* ECOSYSTEM */
+
+let ecosystemLevel=0;
+
+function updateEcosystem(){
+
+ecosystemLevel++;
+
+if(ecosystemLevel<3){
+
+document.getElementById("ecosystem")
+.innerText="🌱";
+
+}
+
+else if(ecosystemLevel<6){
+
+document.getElementById("ecosystem")
+.innerText="🌿✨";
+
+}
+
+else{
+
+document.getElementById("ecosystem")
+.innerText="🌳⭐🦋";
+
+}
+
+}
 
 </script>
 
 </body>
-</html>
+  </html>
