@@ -361,6 +361,120 @@ GlowBot is ready ✨
 
 <div class="card">
 
+  <div class="card">
+
+<h3>📚 Study Support</h3>
+
+<button onclick="focusStudyMode()">
+📘 Focus Mode
+</button>
+
+<button onclick="studyTimer()">
+⏰ Study Timer
+</button>
+
+<button onclick="examStress()">
+😌 Exam Stress Alert
+</button>
+
+<p id="studySupportText">
+GlowBot study support ready 📚
+</p>
+
+</div>
+
+<style>
+
+@keyframes studyFloat{
+
+0%{
+transform:translateY(40px);
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-150px);
+opacity:0;
+}
+
+}
+
+.studyParticle{
+position:fixed;
+pointer-events:none;
+animation:studyFloat 4s linear infinite;
+z-index:-1;
+}
+
+</style>
+
+<script>
+
+function focusStudyMode(){
+
+document.body.style.background=
+'linear-gradient(135deg,#74c0fc,#4dabf7,#a5d8ff,#d0ebff)';
+
+document.getElementById("studySupportText").innerText=
+"📚 Focus Mode Activated - Soft Blue Glow";
+
+let glow=
+document.getElementById("robotGlow");
+
+glow.style.background="#74c0fc";
+glow.style.boxShadow="0 0 120px #74c0fc";
+
+/* Extra Floating Particles */
+
+for(let i=0;i<20;i++){
+
+let particle=
+document.createElement("div");
+
+particle.className="studyParticle";
+
+particle.innerHTML=
+["✨","⭐","🌟","💙"][Math.floor(Math.random()*4)];
+
+particle.style.left=
+Math.random()*100+"vw";
+
+particle.style.top=
+Math.random()*100+"vh";
+
+particle.style.fontSize=
+(Math.random()*20+15)+"px";
+
+document.body.appendChild(particle);
+
+setTimeout(()=>{
+particle.remove();
+},4000);
+
+}
+
+}
+
+function studyTimer(){
+
+document.getElementById("studySupportText").innerText=
+"⏰ Pomodoro Started: 25 min study + 5 min break";
+
+}
+
+function examStress(){
+
+document.getElementById("studySupportText").innerText=
+"🌟 GlowBot says: One chapter at a time. You've got this!";
+
+}
+
+</script>
+  
 <h3>🌌 Emotional Energy</h3>
 
 <div class="energy">
