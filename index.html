@@ -252,6 +252,40 @@ border-radius:10px;
 text-align:center;
 }
 
+/* Chat Box */
+
+#chatBox{
+height:220px;
+overflow-y:auto;
+background:rgba(255,255,255,0.15);
+padding:12px;
+border-radius:15px;
+margin-bottom:10px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
+
+#chatBox p{
+background:rgba(255,255,255,0.15);
+padding:10px;
+border-radius:12px;
+margin:8px 0;
+font-size:14px;
+line-height:1.4;
+}
+
+#chatInput{
+width:calc(100% - 50px);
+display:inline-block;
+}
+
+#sendBtn{
+width:40px;
+padding:12px 8px;
+display:inline-block;
+margin-left:5px;
+}
+
 </style>
 </head>
 
@@ -338,6 +372,11 @@ Save Name
 <p id="robotText" class="center">
 GlowBot is ready ✨
 </p>
+
+<div id="chatBox"></div>
+
+<input id="chatInput" type="text" placeholder="Talk to GlowBot...">
+<button id="sendBtn" onclick="sendMessage()">Send</button>
 
 </div>
 
@@ -948,6 +987,55 @@ document.getElementById('focusText')
 
 }
 
+/* Chat System */
+
+let glowbotResponses=[
+'Remember to take care of yourself! 💙',
+'You\'re doing great! Keep going ✨',
+'One step at a time, you\'ve got this! 🌟',
+'Your wellness journey is important 🌱',
+'Take a deep breath and relax 🌬',
+'You\'re stronger than you think! 💪',
+'Small progress is still progress ✨',
+'Self-care is not selfish 💚',
+'Every moment is a chance to start fresh 🌅',
+'You matter, take care of yourself 🤗'
+];
+
+function sendMessage(){
+let input=document.getElementById('chatInput');
+let message=input.value.trim();
+
+if(message===''){
+return;
+}
+
+let chatBox=document.getElementById('chatBox');
+
+let userMsg=document.createElement('p');
+userMsg.innerText='You: '+message;
+userMsg.style.textAlign='right';
+userMsg.style.background='rgba(255,255,255,0.25)';
+chatBox.appendChild(userMsg);
+
+input.value='';
+
+setTimeout(()=>{
+let botMsg=document.createElement('p');
+let response=glowbotResponses[Math.floor(Math.random()*glowbotResponses.length)];
+botMsg.innerText='GlowBot: '+response;
+chatBox.appendChild(botMsg);
+chatBox.scrollTop=chatBox.scrollHeight;
+},500);
+
+}
+
+document.getElementById('chatInput').addEventListener('keypress',function(e){
+if(e.key==='Enter'){
+sendMessage();
+}
+});
+
 /* Tips */
 
 let tips=[
@@ -967,160 +1055,4 @@ tips[Math.floor(Math.random()*tips.length)];
 </script>
 
 </body>
-  </html>
-  <!-- ========================= -->
-<!-- AI GLOWBOT CHATBOT -->
-<!-- PASTE THIS FULL THING INSIDE -->
-<!-- YOUR MENTAL SCREEN -->
-<!-- ========================= -->
-
-<div class="card">
-
-<h3>🤖 GlowBot AI Support</h3>
-
-<style>
-
-#chatBox{
-height:220px;
-overflow-y:auto;
-background:rgba(255,255,255,0.15);
-padding:12px;
-border-radius:15px;
-margin-bottom:10px;
-backdrop-filter:blur(10px);
-box-shadow:0 0 20px rgba(255,255,255,0.2);
-}
-
-#chatBox p{
-background:rgba(255,255,255,0.15);
-padding:10px;
-border-radius:12px;
-margin:8px 0;
-font-size:14px;
-line-height:1.4;
-}
-
-</style>
-
-<div id="chatBox">
-
-<p><b>GlowBot:</b> Hi 🌟 How are you feeling today?</p>
-
-</div>
-
-<input id="userMessage"
-placeholder="Talk to GlowBot...">
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-<script>
-
-/* ========================= */
-/* AI CHATBOT */
-/* ========================= */
-
-function sendMessage(){
-
-let input =
-document.getElementById("userMessage");
-
-let message = input.value.toLowerCase();
-
-if(message==""){
-return;
-}
-
-let chat =
-document.getElementById("chatBox");
-
-/* USER MESSAGE */
-
-chat.innerHTML +=
-`<p><b>You:</b> ${message}</p>`;
-
-/* BOT REPLY */
-
-let reply =
-"GlowBot is here for you 🌟";
-
-if(message.includes("sad")){
-
-reply =
-"It is okay to feel sad sometimes 💙 Take things slowly today.";
-
-}
-
-else if(message.includes("happy")){
-
-reply =
-"I love hearing that ✨ Keep shining today.";
-
-}
-
-else if(message.includes("stress")){
-
-reply =
-"Take a deep breath 🌤 You are doing better than you think.";
-
-}
-
-else if(message.includes("anxious")){
-
-reply =
-"Try comfort mode and slow breathing 🌬";
-
-}
-
-else if(message.includes("tired")){
-
-reply =
-"Your body needs rest 😴";
-
-}
-
-else if(message.includes("angry")){
-
-reply =
-"Pause for a moment ❤️ Breathe slowly.";
-
-}
-
-else if(message.includes("school")){
-
-reply =
-"Remember to balance study and rest 📚";
-
-}
-
-else if(message.includes("lonely")){
-
-reply =
-"You are not alone 🌟 Talk to someone you trust.";
-
-}
-
-else if(message.includes("exam")){
-
-reply =
-"One step at a time ✨ You can do this.";
-
-}
-
-chat.innerHTML +=
-`<p><b>GlowBot:</b> ${reply}</p>`;
-
-/* AUTO SCROLL */
-
-chat.scrollTop = chat.scrollHeight;
-
-/* CLEAR INPUT */
-
-input.value="";
-
-}
-
-</script>
-
-</div>
+</html>
