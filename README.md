@@ -1,2 +1,2 @@
-# Well-track
-Student health app with Core Glow robot for mental and physical wellness
+# Glow-Well
+Student health app with Glow Bot robot for mental and physical wellness
