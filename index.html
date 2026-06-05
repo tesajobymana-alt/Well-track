@@ -1056,3 +1056,101 @@ tips[Math.floor(Math.random()*tips.length)];
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GlowWell</title>
+
+<style>
+/* ===== NORMAL MODE ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: #111;
+  transition: 0.3s ease;
+}
+
+header {
+  padding: 20px;
+  background: #eaf6f6;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #dfe7ea;
+  cursor: pointer;
+}
+
+/* ===== CALM / SENSORY MODE ===== */
+.sensory-mode {
+  background: #f4f7f8;
+  color: #1b1b1b;
+}
+
+/* remove strong animations */
+.sensory-mode * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* softer UI blocks */
+.sensory-mode header {
+  background: #dde6e8;
+}
+
+.sensory-mode button {
+  background: #cfd9dc;
+  color: #1b1b1b;
+}
+
+/* reduce visual clutter */
+.sensory-mode h1,
+.sensory-mode h2 {
+  letter-spacing: 0.5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>GlowWell</h1>
+<p>Wellbeing system for students</p>
+</header>
+
+<div class="container">
+
+<button onclick="toggleMode()" id="modeBtn">
+Enable Sensory-Friendly Mode
+</button>
+
+<h2>Welcome</h2>
+<p>This system supports daily wellbeing habits like hydration, focus, and calmness.</p>
+
+</div>
+
+<script>
+function toggleMode() {
+  document.body.classList.toggle("sensory-mode");
+
+  const btn = document.getElementById("modeBtn");
+
+  if (document.body.classList.contains("sensory-mode")) {
+    btn.innerText = "Switch to Normal Mode";
+  } else {
+    btn.innerText = "Enable Sensory-Friendly Mode";
+  }
+}
+</script>
+
+</body>
+</html>
