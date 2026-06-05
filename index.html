@@ -692,9 +692,6 @@ let plantLevel=0;
 let energy=0;
 
 /* Navigation */
-  <div class="bottom-nav">
-  ...
-</div>
 
 function show(screen){
 
@@ -998,62 +995,49 @@ let glowbotResponses=[
 'One step at a time, you\'ve got this! 🌟',
 'Your wellness journey is important 🌱',
 'Take a deep breath and relax 🌬',
-'You\'re stronger than you think! 💪',
-'Small progress is still progress ✨',
 'Self-care is not selfish 💚',
-'Every moment is a chance to start fresh 🌅',
-'You matter, take care of yourself 🤗'
+'You deserve to feel good 🌟',
+'Every small step counts ✨',
+'Be kind to yourself today 💙',
+'Progress over perfection! 🌟'
 ];
 
 function sendMessage(){
-let input=document.getElementById('chatInput');
-let message=input.value.trim();
 
-if(message===''){
-return;
-}
+let msg=document.getElementById('chatInput').value;
 
-let chatBox=document.getElementById('chatBox');
+if(msg.trim()!=''){
 
-let userMsg=document.createElement('p');
-userMsg.innerText='You: '+message;
-userMsg.style.textAlign='right';
-userMsg.style.background='rgba(255,255,255,0.25)';
-chatBox.appendChild(userMsg);
+document.getElementById('chatBox').innerHTML+=
+'<p><strong>You:</strong> '+msg+'</p>';
 
-input.value='';
+let botResponse=glowbotResponses[Math.floor(Math.random()*glowbotResponses.length)];
 
-setTimeout(()=>{
-let botMsg=document.createElement('p');
-let response=glowbotResponses[Math.floor(Math.random()*glowbotResponses.length)];
-botMsg.innerText='GlowBot: '+response;
-chatBox.appendChild(botMsg);
-chatBox.scrollTop=chatBox.scrollHeight;
-},500);
+document.getElementById('chatBox').innerHTML+=
+'<p><strong>GlowBot:</strong> '+botResponse+'</p>';
+
+document.getElementById('chatInput').value='';
+
+addPoints();
 
 }
 
-document.getElementById('chatInput').addEventListener('keypress',function(e){
-if(e.key==='Enter'){
-sendMessage();
 }
-});
-
-/* Tips */
 
 let tips=[
-
-'Drink more water 💧',
-'Take study breaks 📚',
-'Sleep early tonight 😴',
-'Talk to friends 💬',
-'Stretch your body 🏃',
-'Write 3 positive things ✨'
-
+'Drink water regularly throughout the day 💧',
+'Take breaks every hour 🌤',
+'Practice deep breathing for stress relief 🌬',
+'Get 7-9 hours of sleep 😴',
+'Exercise daily for better mental health 🏃',
+'Connect with loved ones 💙',
+'Meditate for inner peace 🧘',
+'Journal your thoughts and feelings 📝',
+'Eat nutritious meals 🥗',
+'Spend time in nature 🌿'
 ];
 
-document.getElementById('tip').innerText=
-tips[Math.floor(Math.random()*tips.length)];
+document.getElementById('tip').innerText=tips[Math.floor(Math.random()*tips.length)];
 
 </script>
 
