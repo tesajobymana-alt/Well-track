@@ -1043,3 +1043,106 @@ document.getElementById('tip').innerText=tips[Math.floor(Math.random()*tips.leng
 
 </body>
 </html>
+<!-- 🧩 SENSORY SUPPORT ZONE -->
+
+<div id="sensory" class="screen">
+
+<h2>🧩 Sensory Support Zone</h2>
+
+<div class="card">
+
+<h3>🌊 Calm Mode</h3>
+
+<button onclick="calmMode()">
+Start Calm Mode
+</button>
+
+<p id="calmText"></p>
+
+</div>
+
+<div class="card">
+
+<h3>📋 Visual Routine</h3>
+
+<button onclick="visualRoutine()">
+Show Routine
+</button>
+
+<p id="routineText"></p>
+
+</div>
+
+<div class="card">
+
+<h3>🎧 Sensory Break</h3>
+
+<button onclick="sensoryBreak()">
+Take a Break
+</button>
+
+<p id="sensoryText"></p>
+
+</div>
+
+<div class="card">
+
+<h3>💙 Comfort Messages</h3>
+
+<button onclick="comfortMessage()">
+Show Message
+</button>
+
+<p id="comfortText"></p>
+
+</div>
+
+</div>
+
+<!-- Add this button inside your navigation -->
+
+<button onclick="show('sensory')">
+🧩
+</button>
+
+<script>
+
+function calmMode(){
+
+document.getElementById("calmText").innerText =
+"🌊 Take slow breaths and focus on one thing around you.";
+
+}
+
+function visualRoutine(){
+
+document.getElementById("routineText").innerText =
+"📋 Study → Break → Water → Continue";
+
+}
+
+function sensoryBreak(){
+
+document.getElementById("sensoryText").innerText =
+"🎧 Find a quiet space and relax for 5 minutes.";
+
+}
+
+function comfortMessage(){
+
+let messages = [
+
+"💙 You are doing great.",
+"🌟 Take things one step at a time.",
+"😊 It is okay to ask for help.",
+"✨ Every small step matters.",
+"🌈 You can go at your own pace."
+
+];
+
+document.getElementById("comfortText").innerText =
+messages[Math.floor(Math.random()*messages.length)];
+
+}
+
+</script>
